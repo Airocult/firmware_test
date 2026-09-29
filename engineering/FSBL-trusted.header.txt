@@ -1,0 +1,48 @@
+      -------------------------------------------------------------------
+                          STM32 Signing Tool v2.22.0                   
+      -------------------------------------------------------------------
+
+[Header v2.3] Align the payload to the 0x400 offset by adding padding bytes at the beginning of the payload.
+Adding head padding bytes for payload with header v2.3
+Header version 2.3 preparation... 
+Extracting Entry point value from the input file...
+Entry point value : 0x34188a05
+The headred image file generated successfully: C:\Users\prith\OneDrive\Documents\pritham\frimware\build\FSBL-trusted.bin
+
+Header description:
+
+    Magic: 0x53544d32
+    Signature: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+               00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+               00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+    Checksum: 0x3ce521
+    Header version: 0x20300
+    Size: 0x8ae0
+    Load address: 0xffffffff
+    Entry point: 0x34188a05
+    Image version: 0x0
+    Extension: 0x80000000
+
+Pad header detected:
+    Type: 0x5354ffff
+    Size: 0x1a0
+    Padding values: 46 8b c6 ec ad 27 db 2e 4e 2f cf ef 40 69 5d 9a 88 e6 18 f2 2c 2c e3 4f d2 e0 37 2a 23 fd cf 
+                    1f 15 24 f2 d9 eb 10 11 7c fe 9d 51 30 cd a4 82 7a c6 f6 77 b5 a5 8c 7f ff b2 e0 e7 ee cc 88 
+                    de f4 0b 93 fc 99 63 24 e2 83 fc e9 9b 55 67 45 e7 59 98 83 64 fa 05 fd e9 87 63 24 bc 29 af 
+                    19 37 95 31 c0 5e 29 08 8b 93 eb 37 85 c7 de c0 01 f2 6b 5b e1 3d d1 1a 12 44 43 ba ca 4b 4a 
+                    bc 42 25 e1 51 a9 a8 e5 71 4c 30 8b c7 eb e4 bc e8 22 0b bf 84 95 b7 3f 88 9b d5 dc 82 46 9a 
+                    55 c2 29 eb 90 27 e5 91 98 38 8f 19 5c 56 70 8e 24 43 08 ea 5c 18 90 40 d4 57 13 45 c4 07 fc 
+                    91 34 8d 9c b1 ab 16 16 a1 6d f9 3e 1a 91 ec 46 3c ab 38 65 60 2b 76 06 b9 d4 a7 95 27 b1 41 
+                    de d5 f4 7b a9 03 26 12 eb 9f 08 b8 30 5e 1a cb 6b 97 10 48 35 4f 94 b2 91 ef 6c 18 66 3a e0 
+                    91 fb 15 98 72 84 bd a5 1e 19 2c 23 d4 7c 53 8b 59 5f 1b bd 64 b4 ed 90 59 e4 97 14 ba 2d 56 
+                    64 68 bc 35 52 c9 9c 5d a9 12 f2 d8 57 d3 58 80 d3 65 26 07 25 2f ff 4a 03 3d f6 71 e6 f8 30 
+                    5c b4 8d f4 b4 8d 6a 88 cd 78 68 cb 71 c2 6c d2 88 0b a6 e2 0d ad cc 20 af a6 33 eb 68 0c 5d 
+                    92 b6 8d 52 0a 94 01 01 cb 29 d4 86 6d 88 aa 53 d0 c5 66 86 99 cc 80 ef cd eb ee f3 58 43 96 
+                    6b 55 ac 9f c2 c5 60 96 
+
+Post header 2.3 information :
+    Binary type: 0x10
+    Non authenticated payload length: 0x0
+    Non authenticated payload hash: 0x0
+
+

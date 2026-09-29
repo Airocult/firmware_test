@@ -1,0 +1,42 @@
+STM32N657 FC - JLCPCB FIRMWARE PACKAGE MANIFEST
+generated : 2026-09-23T23:22:05Z by 05_TOOLS/package_jlc.py
+firmware  : 0.2.1   build id : src-3bac755b6796   build date : 2026-09-23T23:20:33Z
+status    : NOT HARDWARE VERIFIED - built and tool-checked only; no board has run these images
+loader    : programming/external_loader.stldr = board loader MX25UM25645G_STM32N657_FC.stldr, BUILT + STRUCTURALLY VERIFIED, NOT HARDWARE QUALIFIED (programming/EXTERNAL_LOADER_STATUS.md)
+results   : UART capture -> diagnostics/CHECK_UART_LOG.bat (primary); SWD -> diagnostics/READ_DIAG_LOG.bat
+png       : SWD_CONNECTION_DIAGRAM.png generated with Pillow
+hashes    : generated last, after every other file was written; verify with 05_TOOLS/verify_package.py
+
+file                                                         bytes  sha256
+diagnostics/App_diag_addr.txt                                   11  030ecd798ee273cc9c05b66371f866c5bdd3e5b54a4b82000b15b97e22fcaf87
+diagnostics/CHECK_UART_LOG.bat                                1726  5ece102016793759215c71db0d3a6151c9a79d24977964a7e6c11f0e414e0342
+diagnostics/decode_diag_log.py                                7535  d49a00c2ed59e227cb748d7630778cc9fc740af4f55572369a90422cfda66409
+diagnostics/EXPECTED_BUILD_ID.txt                               18  5c708abd775fbcda8f3baf51e26f4927b0ebf2f42a4d70688615eea9b4086ca7
+diagnostics/fc_station_common.py                              2636  d9e037059415b60f3984b550147fa55dd593212b1eeaa2839125c483d1efcf98
+diagnostics/parse_station_log.py                              9066  93a31956e9833bee4cd55833aa98eee2aea4efba95556154d4eb0410d165d54d
+diagnostics/READ_DIAG_LOG.bat                                 4174  bfbf54adee0a0ba470b6abfb67b085a78ba0c38b808cd150a30a656f803b2250
+documentation/DIAGNOSTIC_RETRIEVAL.md                         4918  492843242592d9a7e59006a82eba1c335895e9066b97ddf316af2a79c37aa15a
+documentation/JLCPCB_TEST_PROCEDURE.md                       24358  d47b48ea329e85cbf899a2862748909ce98f047ffc2e59b2df8d6d546b601fb0
+documentation/PASS_FAIL_CRITERIA.md                          21813  96a7674e50502de1e3e98b97fb3f3f38b9188ff939fc8c20008af955578dc450
+documentation/SWD_CONNECTION_DIAGRAM.png                     59977  4c001b4341f47b5f222bf3f04ddab0c00653e084b3812afd859be088840e0851
+documentation/SWD_CONNECTION_DIAGRAM.svg                      4628  718b7195747f3b54af9f2ccaca5aa3b42099e32d029b209d5169241ad5345616
+engineering/App-trusted.header.txt                            2847  a8cdda47b582b18c152a5fdd26437cd80823678617f5807dacbd87f31d72481e
+engineering/BUILD_LOG.txt                                   300183  19204374041f42445865b984768ecc7a3d3919eb130513ed37335112bba636e7
+engineering/FC_FSBL.elf                                    3010548  518cbdf724481cd75c91f1f0df597a7d51b01d8cbeb3c4a3633f98ec59d8bdc7
+engineering/FC_FSBL.map                                     769196  6bb5c413d9d58ed4cf133fb97dee6eb7824e60031c2c3299d0a06e513ca3dcb2
+engineering/FC_Manufacturing_Test.elf                      4025716  fd91e62e28a79510b522956d8184714e6daecbc134fe647717c7f54107941b7f
+engineering/FC_Manufacturing_Test.map                      1937430  4c684fa094f3507fe46d04df1f1cdc608a466cf7b20749a73bef7c00ed889d05
+engineering/FSBL-trusted.header.txt                           2847  2248d80532bb7c6524f55150f97c571a9d049b98f5438ecc837426877c23af25
+engineering/HOST_TEST_REPORT.txt                             54392  c8ab51497598b4038721fdae5cfedca3cdd760aec4ae8e69a7c91b861cbdced9
+engineering/IMAGE_VERIFICATION.txt                            3767  d5ae3d347723fc88d8739146d05d018350e8aff2c9844ff5d32bc451c07a5d2f
+engineering/LOADER_VERIFICATION.txt                           4977  07e9f6afaa3f0231f00387a8841234242291d44e511834753e203037ac7ef1a5
+engineering/REPRO_CHECK.txt                                    624  5df1b48232e6d404e0bc3849abcf6c6086ae0f1a094099849cff80defb7afc68
+engineering/SOURCE_MANIFEST.txt                             111625  088ccd6908794df32e406f5297382105e59d38834bd83e34ea87640393c85aad
+engineering/STATIC_SAFETY_REPORT.txt                          6121  4fa04454b9d52c16d5cf1c6d242e9ecabf945ab0b33743fe2b967f20fcd880e2
+firmware/FC_FSBL_LRUN_Trusted.bin                            36128  dc5d959a82de5d2aa4bc57755a5c51feae969d76173ac6828d32cc9fe994819e
+firmware/FC_Manufacturing_Test_Trusted.bin                  102784  5fb0558338c5faff848acf8220fc19bcdeb8261367209420fdbbf8d27bfbe8fd
+firmware/VERSION.txt                                          5725  963c4ea542dbd3f8c4049ba4c84ac972926e3d5cb6a23698094d6688ce02f13c
+programming/external_loader.stldr                          2929332  84e0993d3ac1115e70a49640c1ba3de28e1b2da789e996390bf353c21a6be9e6
+programming/EXTERNAL_LOADER_STATUS.md                        13856  d393e8fb09de582c6dba3445e51feb5c5ca6c3079bf43883291b3e2c9ed06965
+programming/PROGRAM_JLCPCB.bat                                4202  fc136aabc5c28bd45ed525391d44dd9fd11383cc637f3ddb60011c49bd4e5675
+programming/VERIFY_JLCPCB.bat                                 3684  985ad9ace877719f20a15b4c2a3bd19f60165f7f05525374c76bad21be32193c

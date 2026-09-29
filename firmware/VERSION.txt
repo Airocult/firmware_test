@@ -1,0 +1,72 @@
+STM32N657 FC - VERSION.txt
+generated            : 2026-09-23T23:22:04Z
+hardware status      : NOT HARDWARE VERIFIED (bring-up / manufacturing-test firmware)
+
+[firmware]
+firmware_version     : 0.2.1
+build_id             : src-3bac755b6796
+build_date           : 2026-09-23T23:20:33Z
+target_mcu           : STM32N657I0H3Q
+boot_architecture    : FSBL_LRUN
+nor_flash            : MX25UM25645GXDI00
+
+[st_software]
+stm32cuben6_package  : FW.N6.1.4.0 / patch FW.N6.1.4.1
+hal_driver_version   : 1.4.0 (rc 0) from vendor\stm32n6xx-hal-driver\Inc\stm32n6xx_hal.h
+extmem_manager       : 0x00010600 = v1.6.0
+vendor stm32n6xx-hal-driver : commit d88071ed0adc1991a5daed6f20ab311f80bb33b7 sha256(archive) 9b6150c48dfe87780eaa45177b0bd57e7780858ca421376415b4e936305800a1
+vendor cmsis-device-n6      : commit 81fe2fe8d576ec4c55be308ac4504bd580e498e6 sha256(archive) 9c77a82a8faf3f097d461a324eee584208abf42a9c9e74de2fe07ffa36861286
+vendor stm32-mw-extmem-mgr  : commit 8510c307b201f3986e6428aaa349656fd37c0acc sha256(archive) 38d2ad558157795cf8cb24cd9cba61744c824bfedd925504b786795236d4e17a
+vendor stm32-mw-extmem-ldr  : commit 1a732fe6b730788e7965bfe1cceb28a25e052ef2 sha256(archive) 206bb922f38f530aad02e9f98d5b47c5c21ae4115b01539699df73814f6937a7
+
+[toolchain]
+arm-none-eabi-gcc    : arm-none-eabi-gcc.exe (GNU Tools for STM32 14.3.rel1.20251027-0700) 14.3.1 20250623
+  path               : C:\ST\STM32CubeIDE_2.1.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.14.3.rel1.win32_1.0.100.202602081740\tools\bin\arm-none-eabi-gcc.exe
+make                 : GNU Make 4.4.1_st_20231030-1220
+  path               : C:\ST\STM32CubeIDE_2.1.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.make.win32_2.2.100.202601091506\tools\bin\make.exe
+STM32_SigningTool_CLI: STM32 Signing Tool v2.22.0
+  path               : C:\ST\STM32CubeIDE_2.1.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.cubeprogrammer.win32_2.2.400.202601091506\tools\bin\STM32_SigningTool_CLI.exe
+STM32_Programmer_CLI : STM32CubeProgrammer v2.22.0
+  path               : C:\ST\STM32CubeIDE_2.1.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.cubeprogrammer.win32_2.2.400.202601091506\tools\bin\STM32_Programmer_CLI.exe
+signing_header       : STM32 header v2.3 (-nk -of 0x80000000 -t fsbl -hv 2.3 -align)
+external_loader      : board loader MX25UM25645G_STM32N657_FC.stldr (07_EXTERNAL_LOADER, MX25UM25645G 32 MiB, XSPI2 NCS1) - BUILT + STRUCTURALLY VERIFIED, NOT HARDWARE QUALIFIED
+
+[release_identity]
+source_digest        : 3bac755b679664087f34c1eb54022b7562d23dd38991c35e10a79765a30c3fa1 (SHA-256 over build/SOURCE_MANIFEST.txt)
+build_id_rule        : git short hash if available, else src-<first 12 hex of the source digest>
+reproducibility      : FSBL.bin / App.bin are byte-identical when rebuilt from the same sources with
+                       the same FC_BUILD_ID and FC_BUILD_DATE (checked: build/REPRO_CHECK.txt);
+                       *-trusted.bin are NOT byte-reproducible (the signing tool inserts a random
+                       padding block) - their 0x400 payload equals the raw .bin (IMAGE_VERIFICATION).
+
+[verification] (tool results only - NOT hardware results)
+image verification   : PASS (build/IMAGE_VERIFICATION.txt)
+static safety        : PASS (build/STATIC_SAFETY_REPORT.txt)
+host tests           : PASS (build/HOST_TEST_REPORT.txt)
+loader structure     : PASS (build/LOADER_VERIFICATION.txt)
+reproducibility      : PASS (build/REPRO_CHECK.txt)
+
+[nor_layout]
+FSBL-trusted.bin     : 0x70000000 (header) / 0x70000400 (image) -> RAM 0x34180000
+App-trusted.bin      : 0x70100000 (header) / 0x70100400 (image) -> RAM 0x34000000, VTOR 0x34000400
+LRUN copy size       : 0x40000 (EXTMEM_LRUN_SOURCE_SIZE)
+
+[artifacts] (size bytes, SHA-256)
+FSBL.elf                      3010548  518cbdf724481cd75c91f1f0df597a7d51b01d8cbeb3c4a3633f98ec59d8bdc7
+FSBL.bin                        35104  74dbcf9c7b6840d9cde634b1431b379555380b05f669c03e67c35ddeed6c9a7d
+FSBL-trusted.bin                36128  dc5d959a82de5d2aa4bc57755a5c51feae969d76173ac6828d32cc9fe994819e
+App.elf                       4025716  fd91e62e28a79510b522956d8184714e6daecbc134fe647717c7f54107941b7f
+App.bin                        101760  ea5c78b057d3a8bcc34cc44a91fa5c35c5d03902d9ac60935da2c42388fd43dd
+App-trusted.bin                102784  5fb0558338c5faff848acf8220fc19bcdeb8261367209420fdbbf8d27bfbe8fd
+App_diag_addr.txt                  11  030ecd798ee273cc9c05b66371f866c5bdd3e5b54a4b82000b15b97e22fcaf87
+MX25UM25645G_STM32N657_FC.stldr    2929332  84e0993d3ac1115e70a49640c1ba3de28e1b2da789e996390bf353c21a6be9e6
+SOURCE_MANIFEST.txt            111625  088ccd6908794df32e406f5297382105e59d38834bd83e34ea87640393c85aad
+FSBL.map                       769196  6bb5c413d9d58ed4cf133fb97dee6eb7824e60031c2c3299d0a06e513ca3dcb2
+App.map                       1937430  4c684fa094f3507fe46d04df1f1cdc608a466cf7b20749a73bef7c00ed889d05
+FSBL-trusted.header.txt          2847  2248d80532bb7c6524f55150f97c571a9d049b98f5438ecc837426877c23af25
+App-trusted.header.txt           2847  a8cdda47b582b18c152a5fdd26437cd80823678617f5807dacbd87f31d72481e
+IMAGE_VERIFICATION.txt           3767  d5ae3d347723fc88d8739146d05d018350e8aff2c9844ff5d32bc451c07a5d2f
+STATIC_SAFETY_REPORT.txt         6121  4fa04454b9d52c16d5cf1c6d242e9ecabf945ab0b33743fe2b967f20fcd880e2
+HOST_TEST_REPORT.txt            54392  c8ab51497598b4038721fdae5cfedca3cdd760aec4ae8e69a7c91b861cbdced9
+LOADER_VERIFICATION.txt          4977  07e9f6afaa3f0231f00387a8841234242291d44e511834753e203037ac7ef1a5
+REPRO_CHECK.txt                   624  5df1b48232e6d404e0bc3849abcf6c6086ae0f1a094099849cff80defb7afc68

@@ -1,0 +1,54 @@
+STM32N657 FC - IMAGE VERIFICATION REPORT
+generated: 2026-09-23T23:21:15Z
+build dir: C:\Users\prith\OneDrive\Documents\pritham\frimware\build
+status   : SOFTWARE/TOOL CHECK ONLY - NOT HARDWARE VERIFIED
+
+== FSBL image (FSBL.bin -> FSBL-trusted.bin) ==
+       FSBL.bin size = 35104 (0x8920) bytes
+       FSBL-trusted.bin size = 36128 (0x8D20) bytes
+[PASS] FSBL-trusted.bin magic bytes 53 54 4D 32 ("STM2") at offset 0 (little-endian word 0x324D5453)
+[PASS] payload at 0x400 equals FSBL.bin byte for byte (35104 bytes)
+       bytes after payload: 0
+[PASS] FSBL-trusted.bin size 0x8D20 <= 0x80000
+[PASS] FSBL-trusted.bin programmed range 0x70000000..0x70008D1F ends below 0x70010000 (documented layout)
+[PASS] FSBL-trusted.bin size is a multiple of 16 bytes (DTR-OPI even address/length, ECC chunk rule)
+       header: version=0x00020300 image_length=0x8AE0 entry=0x34188A05 checksum=0x003CE521
+[PASS] header version 0x00020300 == v2.3
+       raw word[0] (initial SP)    = 0x34110000
+       raw word[1] (Reset_Handler) = 0x34188A05
+[PASS] entry 0x34188A05 within 0x34180400..0x341FFFFF and Thumb bit set
+[PASS] header entry point equals raw word[1]
+[PASS] FSBL initial SP 0x34110000 == template BootROM temporary stack (accepted; Reset_Handler reloads SP from _estack)
+
+== App image (App.bin -> App-trusted.bin) ==
+       App.bin size = 101760 (0x18D80) bytes
+       App-trusted.bin size = 102784 (0x19180) bytes
+[PASS] App-trusted.bin magic bytes 53 54 4D 32 ("STM2") at offset 0 (little-endian word 0x324D5453)
+[PASS] payload at 0x400 equals App.bin byte for byte (101760 bytes)
+       bytes after payload: 0
+[PASS] App-trusted.bin size 0x19180 <= 0x40000
+[PASS] App-trusted.bin programmed range 0x70100000..0x7011917F ends below 0x70120000 (documented layout)
+[PASS] App-trusted.bin size is a multiple of 16 bytes (DTR-OPI even address/length, ECC chunk rule)
+       header: version=0x00020300 image_length=0x18F40 entry=0x34013A25 checksum=0x009F681D
+[PASS] header version 0x00020300 == v2.3
+       raw word[0] (initial SP)    = 0x34200000
+       raw word[1] (Reset_Handler) = 0x34013A25
+[PASS] entry 0x34013A25 within 0x34000400..0x341FFFFF and Thumb bit set
+[PASS] header entry point equals raw word[1]
+[PASS] initial SP 0x34200000 within 0x34000000..0x34200000
+
+== artifact inventory (size, SHA-256) ==
+       FSBL.elf                      3010548 bytes  sha256=518cbdf724481cd75c91f1f0df597a7d51b01d8cbeb3c4a3633f98ec59d8bdc7
+       FSBL.bin                        35104 bytes  sha256=74dbcf9c7b6840d9cde634b1431b379555380b05f669c03e67c35ddeed6c9a7d
+       FSBL.map                       769196 bytes  sha256=6bb5c413d9d58ed4cf133fb97dee6eb7824e60031c2c3299d0a06e513ca3dcb2
+       FSBL-trusted.bin                36128 bytes  sha256=dc5d959a82de5d2aa4bc57755a5c51feae969d76173ac6828d32cc9fe994819e
+       FSBL-trusted.header.txt          2847 bytes  sha256=2248d80532bb7c6524f55150f97c571a9d049b98f5438ecc837426877c23af25
+       App.elf                       4025716 bytes  sha256=fd91e62e28a79510b522956d8184714e6daecbc134fe647717c7f54107941b7f
+       App.bin                        101760 bytes  sha256=ea5c78b057d3a8bcc34cc44a91fa5c35c5d03902d9ac60935da2c42388fd43dd
+       App.map                       1937430 bytes  sha256=4c684fa094f3507fe46d04df1f1cdc608a466cf7b20749a73bef7c00ed889d05
+       App-trusted.bin                102784 bytes  sha256=5fb0558338c5faff848acf8220fc19bcdeb8261367209420fdbbf8d27bfbe8fd
+       App-trusted.header.txt           2847 bytes  sha256=a8cdda47b582b18c152a5fdd26437cd80823678617f5807dacbd87f31d72481e
+       App_diag_addr.txt                  11 bytes  sha256=030ecd798ee273cc9c05b66371f866c5bdd3e5b54a4b82000b15b97e22fcaf87
+
+checks passed: 18  failed: 0
+OVERALL: PASS

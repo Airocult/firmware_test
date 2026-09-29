@@ -1,0 +1,69 @@
+STM32N657 FC - EXTERNAL LOADER VERIFICATION (05_TOOLS/verify_loader.py)
+generated : 2026-09-23T23:21:15Z
+spec      : 01_HARDWARE_HANDOFF/PHASE2_CORRECTIONS_SPEC.md section 3 (Astra B2)
+status    : STRUCTURAL CHECK ONLY - NOT HARDWARE QUALIFIED
+loader    : C:\Users\prith\OneDrive\Documents\pritham\frimware\build\MX25UM25645G_STM32N657_FC.stldr
+sha256    : 84e0993d3ac1115e70a49640c1ba3de28e1b2da789e996390bf353c21a6be9e6
+size      : 2929332
+reference : C:\ST\STM32CubeIDE_2.1.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.cubeprogrammer.win32_2.2.400.202601091506\tools\bin\ExternalLoader\MX25UM51245G_STM32N6570-NUCLEO.stldr
+ref sha256: 03f6b91f4ee3ff8d701802cd4671523df0c4b2668a976c53a0a63e67d1acae43
+
+== Inputs ==
+[PASS] loader file readable
+[PASS] loader parsed as ELF32 little-endian
+[PASS] reference loader readable (ST MX25UM51245G_STM32N6570-NUCLEO.stldr)
+[PASS] reference parsed as ELF32 little-endian
+
+== A. ELF structure ==
+[PASS] ELF: ELF32 little-endian, e_machine 40 (EM_ARM=40), e_type 2 (ET_EXEC=2)
+[PASS] ARM EABI version 5 (e_flags 0x05000400; reference 0x05000000)
+[PASS] entry point 0x34181181 inside an executable PT_LOAD segment
+[PASS] 2 PT_LOAD segments (loader + device descriptor; reference 2)
+  [INFO] segment 0: vaddr 0x34180404 filesz 0x07F5C memsz 0x08364 flags R E -> .isr_vector .data .gnu.sgstubs .bss .text .rodata ._user_heap_stack
+  [INFO] segment 1: vaddr 0x34188250 filesz 0x000C8 memsz 0x000C8 flags R   -> .stm32_device_info
+[PASS] loader code/data segment(s) inside RAM_D1 0x34180404..0x341A0400 (linker script)
+
+== B. Loader API symbols ==
+  [INFO] reference exports: Init, Write, SectorErase, MassErase, Verify
+[PASS] API Init: GLOBAL FUNC at 0x34181199 (Thumb, section .text, segment 0)
+[PASS] API Write: GLOBAL FUNC at 0x341811CD (Thumb, section .text, segment 0)
+[PASS] API SectorErase: GLOBAL FUNC at 0x34181229 (Thumb, section .text, segment 0)
+[PASS] API MassErase: GLOBAL FUNC at 0x34181201 (Thumb, section .text, segment 0)
+[PASS] API Verify: GLOBAL FUNC at 0x341812C1 (Thumb, section .text, segment 0)
+[PASS] hook memory_mapmode: GLOBAL FUNC (required GLOBAL = strong board hook, so init failures propagate; ST default WEAK; reference WEAK)
+[PASS] hook memory_write: GLOBAL FUNC (required GLOBAL = strong board hook, so init failures propagate; ST default WEAK; reference WEAK)
+[PASS] hook memory_sectorerase: GLOBAL FUNC (required GLOBAL = strong board hook, so init failures propagate; ST default WEAK; reference WEAK)
+[PASS] hook memory_masserase: GLOBAL FUNC (required GLOBAL = strong board hook, so init failures propagate; ST default WEAK; reference WEAK)
+[PASS] board init status object fc_loader_status present at 0x341806E0 (72 bytes, SWD-readable)
+
+== C. StorageInfo location ==
+[PASS] StorageInfo: GLOBAL OBJECT, 200 bytes (sizeof(sStorageInfo) = 200; reference 200 bytes)
+[PASS] StorageInfo section '.stm32_device_info': PROGBITS, allocated, read-only, not executable (flags 0x2; reference 'P3' flags 0x2)
+[PASS] StorageInfo alone in its own PT_LOAD segment 1 (flags R  ); reference: segment 0 alone=yes
+  [INFO] StorageInfo at 0x34188250, segment vaddr 0x34188250 (address range inside segment 0: ST GCC linker-script layout, the descriptor is never read at run time)
+  [INFO] reference StorageInfo at 0x00000000 in section 'P3', segment 0 vaddr 0x00000000 (IAR layout)
+
+== D. StorageInfo content (board facts) ==
+[PASS] DeviceName 'MX25UM25645G_STM32N657_FC' (expected 'MX25UM25645G_STM32N657_FC', NUL-terminated within 100 bytes)
+[PASS] DeviceType 3 (expected 3 = NOR_FLASH)
+[PASS] DeviceStartAddress 0x70000000 (expected 0x70000000, XSPI2 window)
+[PASS] DeviceSize 0x02000000 (expected 0x02000000 = 32 MiB, MX25UM25645G 256 Mbit)
+[PASS] Sectors 512 x 0x10000 + {0,0} terminator (expected 512 x 0x10000)
+[PASS] sector table covers the device: 0x02000000 == DeviceSize 0x02000000
+[PASS] PageSize 0x1000 (expected 0x1000, divides every sector)
+[PASS] EraseValue 0xFF (expected 0xFF)
+[PASS] stm32_extmemloader_conf.h #defines == decoded StorageInfo
+
+== E. .stldr vs build ELF ==
+[PASS] .stldr is a byte copy of build/loader/MX25UM25645G_STM32N657_FC.elf
+
+== F. Reference comparison (ST NUCLEO-N657X0-Q loader, facts) ==
+[PASS] reference StorageInfo decoded
+  [INFO] board     : name 'MX25UM25645G_STM32N657_FC', type 3, start 0x70000000, size 0x02000000 (32 MiB), page 0x1000, erase 0xFF, sectors 512 x 0x10000
+  [INFO] reference : name 'MX25UM51245G_STM32N6570-NUCLEO', type 3, start 0x70000000, size 0x04000000 (64 MiB), page 0x1000, erase 0xFF, sectors 1024 x 0x10000
+  [INFO] difference: size 0x02000000 vs 0x04000000, sectors 512 vs 1024, page 0x1000 vs 0x1000
+  [INFO] the reference declares 64 MiB (MX25UM51245G, 512 Mbit); U2 MX25UM25645G is 32 MiB, so it is NOT the board default (addresses above 0x71FFFFFF do not exist on U2)
+
+checks passed: 33  failed: 0
+STRUCTURAL CHECK ONLY - NOT HARDWARE QUALIFIED
+OVERALL: PASS

@@ -1,0 +1,10 @@
+STM32N657 FC - REPRODUCIBILITY CHECK (05_TOOLS/check_repro.py)
+generated : 2026-09-23T23:21:27Z
+build id  : src-3bac755b6796   build date : 2026-09-23T23:20:33Z
+scope     : raw FSBL.bin / App.bin rebuilt from the same sources in a temporary directory
+            (trusted images are not byte-reproducible by design: random signing padding)
+
+[PASS] FSBL.bin byte-identical on rebuild (35104 bytes, sha256 74dbcf9c7b6840d9cde634b1431b379555380b05f669c03e67c35ddeed6c9a7d)
+[PASS] App.bin byte-identical on rebuild (101760 bytes, sha256 ea5c78b057d3a8bcc34cc44a91fa5c35c5d03902d9ac60935da2c42388fd43dd)
+
+OVERALL: PASS

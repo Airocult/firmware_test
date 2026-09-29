@@ -1,0 +1,841 @@
+STM32N657 FC - HOST TEST REPORT (05_TOOLS/host_tests/run_host_tests.py)
+generated : 2026-09-23T23:21:15Z
+scope     : PC-side logic tests only; NOT a hardware test
+
+host cc   : C:\msys64\mingw64\bin\gcc.exe (gcc.exe (Rev14, Built by MSYS2 project) 15.2.0)
+python    : 3.11.4
+
+==============================================================================
+SUITE clock_check                              c      PASS
+==============================================================================
+$ C:\msys64\mingw64\bin\gcc.exe -std=c11 -O1 -g -Wall -Wextra -Werror -Wno-unused-function -DFC_HOST_TEST -IC:\Users\prith\OneDrive\Documents\pritham\frimware\05_TOOLS\host_tests -IC:\Users\prith\OneDrive\Documents\pritham\frimware\03_MANUFACTURING_TEST\Tests C:\Users\prith\OneDrive\Documents\pritham\frimware\03_MANUFACTURING_TEST\Tests\fc_clock_check.c C:\Users\prith\OneDrive\Documents\pritham\frimware\05_TOOLS\host_tests\clock_check\test_clock_check.c -o C:\Users\prith\OneDrive\Documents\pritham\frimware\build\host_tests\clock_check.exe
+
+$ clock_check.exe 
+[PASS] FSBL PLL1 = 64 MHz / 4 * 75 = 1200 MHz (= 0x47868C00)
+[PASS] expected CPU = PLL1 / IC1 divider 2 (= 0x23C34600)
+[PASS] expected HCLK = PLL1 / IC2 divider 3 / AHB 2 (= 0x0BEBC200)
+[PASS] expected PCLKx = HCLK / APB 1 (= 0x0BEBC200)
+[PASS] USART1 mask bit mirrors main.h FC_MSP_CLKERR_USART1 (= 0x00000001)
+[PASS] FAIL_ALL covers the 7 criteria (= 0x0000007F)
+[PASS] nominal FSBL clock tree -> 0 (= 0x00000000)
+[PASS] NULL input -> every criterion fails (= 0x0000007F)
+[PASS] CPU +1 Hz -> only its bit (= 0x00000001)
+[PASS] CPU -1 Hz -> only its bit (= 0x00000001)
+[PASS] CPU halved -> only its bit (= 0x00000001)
+[PASS] CPU doubled -> only its bit (= 0x00000001)
+[PASS] CPU zero -> only its bit (= 0x00000001)
+[PASS] CPU at the other nominal value (200000000) -> only its bit (= 0x00000001)
+[PASS] CPU restored -> 0 (= 0x00000000)
+[PASS] HCLK +1 Hz -> only its bit (= 0x00000002)
+[PASS] HCLK -1 Hz -> only its bit (= 0x00000002)
+[PASS] HCLK halved -> only its bit (= 0x00000002)
+[PASS] HCLK doubled -> only its bit (= 0x00000002)
+[PASS] HCLK zero -> only its bit (= 0x00000002)
+[PASS] HCLK at the other nominal value (600000000) -> only its bit (= 0x00000002)
+[PASS] HCLK restored -> 0 (= 0x00000000)
+[PASS] PCLK1 +1 Hz -> only its bit (= 0x00000004)
+[PASS] PCLK1 -1 Hz -> only its bit (= 0x00000004)
+[PASS] PCLK1 halved -> only its bit (= 0x00000004)
+[PASS] PCLK1 doubled -> only its bit (= 0x00000004)
+[PASS] PCLK1 zero -> only its bit (= 0x00000004)
+[PASS] PCLK1 at the other nominal value (600000000) -> only its bit (= 0x00000004)
+[PASS] PCLK1 restored -> 0 (= 0x00000000)
+[PASS] PCLK2 +1 Hz -> only its bit (= 0x00000008)
+[PASS] PCLK2 -1 Hz -> only its bit (= 0x00000008)
+[PASS] PCLK2 halved -> only its bit (= 0x00000008)
+[PASS] PCLK2 doubled -> only its bit (= 0x00000008)
+[PASS] PCLK2 zero -> only its bit (= 0x00000008)
+[PASS] PCLK2 at the other nominal value (600000000) -> only its bit (= 0x00000008)
+[PASS] PCLK2 restored -> 0 (= 0x00000000)
+[PASS] PCLK4 +1 Hz -> only its bit (= 0x00000010)
+[PASS] PCLK4 -1 Hz -> only its bit (= 0x00000010)
+[PASS] PCLK4 halved -> only its bit (= 0x00000010)
+[PASS] PCLK4 doubled -> only its bit (= 0x00000010)
+[PASS] PCLK4 zero -> only its bit (= 0x00000010)
+[PASS] PCLK4 at the other nominal value (600000000) -> only its bit (= 0x00000010)
+[PASS] PCLK4 restored -> 0 (= 0x00000000)
+[PASS] PCLK5 +1 Hz -> only its bit (= 0x00000020)
+[PASS] PCLK5 -1 Hz -> only its bit (= 0x00000020)
+[PASS] PCLK5 halved -> only its bit (= 0x00000020)
+[PASS] PCLK5 doubled -> only its bit (= 0x00000020)
+[PASS] PCLK5 zero -> only its bit (= 0x00000020)
+[PASS] PCLK5 at the other nominal value (600000000) -> only its bit (= 0x00000020)
+[PASS] PCLK5 restored -> 0 (= 0x00000000)
+[PASS] CPU = 400 MHz (IC2 SYSCLK) -> CPU bit (= 0x00000001)
+[PASS] USART1 kernel-clock error -> USART1 bit only (= 0x00000040)
+[PASS] SPI1 kernel-clock error ignored (fails the SPI1 sensor tests) (= 0x00000000)
+[PASS] SPI2 kernel-clock error ignored (fails the SPI2 sensor tests) (= 0x00000000)
+[PASS] I2C2 kernel-clock error ignored (fails BMM350 / I2C mux) (= 0x00000000)
+[PASS] XSPI2 kernel-clock error ignored (fails NOR / PSRAM) (= 0x00000000)
+[PASS] all non-USART1 bits together ignored (= 0x00000000)
+[PASS] every bit except USART1 (incl. undefined) ignored (= 0x00000000)
+[PASS] USART1 + unrelated bits -> USART1 bit only (= 0x00000040)
+[PASS] mask all ones -> USART1 bit only (= 0x00000040)
+[PASS] all clocks 0, no MSP error -> the 6 frequency bits (= 0x0000003F)
+[PASS] all clocks 0 + USART1 error -> all 7 bits (= 0x0000007F)
+[PASS] AHB /1 (HCLK + PCLKs 400 MHz) -> HCLK and 4 PCLK bits (= 0x0000003E)
+[PASS] APB1 /2 only -> PCLK1 bit (= 0x00000004)
+[PASS] each item has a name
+[PASS] each item has a name
+[PASS] each item has a name
+[PASS] each item has a name
+[PASS] each item has a name
+[PASS] each item has a name
+[PASS] each item has a name
+[PASS] item names are distinct
+[PASS] CPU item name = SystemCoreClock
+[PASS] PCLK4 item name
+[PASS] name of 0 -> ?
+[PASS] name of two bits -> ?
+[PASS] name of undefined bit -> ?
+[PASS] expected CPU 600 MHz (= 0x23C34600)
+[PASS] expected bus clock 200 MHz (= 0x0BEBC200)
+[PASS] expected bus clock 200 MHz (= 0x0BEBC200)
+[PASS] expected bus clock 200 MHz (= 0x0BEBC200)
+[PASS] expected bus clock 200 MHz (= 0x0BEBC200)
+[PASS] expected bus clock 200 MHz (= 0x0BEBC200)
+[PASS] USART1 item has no frequency (= 0x00000000)
+[PASS] expected of invalid item -> 0 (= 0x00000000)
+[PASS] actual PCLK2 read from its field (= 0x075BCD15)
+[PASS] actual CPU read from its field (= 0x23C34600)
+[PASS] actual of USART1 item -> 0 (= 0x00000000)
+[PASS] actual with NULL -> 0 (= 0x00000000)
+SUITE clock_check: 89 checks, 0 failed
+SUITE clock_check: PASS
+exit code 0
+
+==============================================================================
+SUITE esp32c5_proto                            c      PASS
+==============================================================================
+$ C:\msys64\mingw64\bin\gcc.exe -std=c11 -O1 -g -Wall -Wextra -Werror -Wno-unused-function -DFC_HOST_TEST -IC:\Users\prith\OneDrive\Documents\pritham\frimware\05_TOOLS\host_tests -IC:\Users\prith\OneDrive\Documents\pritham\frimware\04_DRIVERS\esp32c5 C:\Users\prith\OneDrive\Documents\pritham\frimware\05_TOOLS\host_tests\esp32c5_proto\test_esp32c5_proto.c C:\Users\prith\OneDrive\Documents\pritham\frimware\04_DRIVERS\esp32c5\esp32c5_proto.c -o C:\Users\prith\OneDrive\Documents\pritham\frimware\build\host_tests\esp32c5_proto.exe
+
+$ esp32c5_proto.exe 
+[PASS] build_sync: frame length is 46 bytes (= 0x0000002E)
+[PASS] build_sync: C0 00 08 24 00 00000000 07 07 12 20 (55 x 32) C0 byte-exact
+[PASS] build_sync: nothing written after the closing C0
+[PASS] SYNC frame buffer worst case = 90 (= 0x0000005A)
+[PASS] ROM SYNC response length constant = 12 (= 0x0000000C)
+[PASS] build_sync: cap exactly 46 is enough (= 0x0000002E)
+[PASS] build_sync: cap 46 output byte-exact
+[PASS] build_sync: cap 45 (closing C0 missing) -> 0 (= 0x00000000)
+[PASS] build_sync: cap 20 -> 0 (= 0x00000000)
+[PASS] build_sync: cap 2 -> 0 (= 0x00000000)
+[PASS] build_sync: cap 1 -> 0 (= 0x00000000)
+[PASS] build_sync: cap 0 -> 0 (= 0x00000000)
+[PASS] build_sync: NULL buffer -> 0 (= 0x00000000)
+[PASS] valid ROM response: 1 frame (= 0x00000001)
+[PASS] valid ROM response: VALID_OK (= 0x00000001)
+[PASS] valid ROM response: verdict PASS
+[PASS] valid ROM response: first_ok recorded
+[PASS] valid ROM response: len 12 (= 0x0000000C)
+[PASS] valid ROM response: size 4 (= 0x00000004)
+[PASS] valid ROM response: value decoded LE (info only) (= 0x3C7E1A05)
+[PASS] valid ROM response: status 0 (= 0x00000000)
+[PASS] valid ROM response: error 0 (= 0x00000000)
+[PASS] valid ROM response: no stray bytes (= 0x00000000)
+[PASS] valid ROM response: no incomplete trailing frame (= 0x00000000)
+[PASS] value 0 with 4 status bytes: still PASS (value is info only)
+[PASS] value 0 reported (= 0x00000000)
+[PASS] non-zero reserved bytes: VALID_OK (reserved not judged) (= 0x00000001)
+[PASS] 8 responses (C0..C0 C0..C0): 8 frames, empty frames ignored (= 0x00000008)
+[PASS] 8 responses: 8 x VALID_OK (= 0x00000008)
+[PASS] 8 responses: verdict PASS
+[PASS] 8 responses with shared C0: 8 x VALID_OK (= 0x00000008)
+[PASS] 8 responses with shared C0: 8 frames (= 0x00000008)
+[PASS] value with C0/DB: 3 escaped bytes on the wire (= 0x00000011)
+[PASS] value with C0/DB: encoded as DB DD / DB DC
+[PASS] value with C0/DB: decodes to a VALID_OK 12-byte frame (= 0x00000001)
+[PASS] value with C0/DB: value restored (= 0x34DBC0DB)
+[PASS] value with C0/DB: verdict PASS
+[PASS] value with C0/DB: nothing discarded (= 0x00000000)
+[PASS] text before first C0: counted as stray bytes (= 0x00000035)
+[PASS] text before first C0: ignored, 1 frame (= 0x00000001)
+[PASS] text before first C0: verdict PASS
+[PASS] text between frames: 3 frames (text is one) (= 0x00000003)
+[PASS] text between frames: 2 x VALID_OK (= 0x00000002)
+[PASS] text between frames: text frame NOT_RESPONSE (= 0x00000001)
+[PASS] text between frames: not counted as echoed request (= 0x00000000)
+[PASS] text between frames: first non-valid frame recorded
+[PASS] text between frames: verdict PASS (text is info only)
+[PASS] 3-char text between frames: SHORT (= 0x00000001)
+[PASS] text-only frames: verdict NO_VALID
+[PASS] truncated header 01 08 04 00: SHORT (= 0x00000001)
+[PASS] truncated header: not PASS
+[PASS] truncated header: verdict NO_VALID
+[PASS] classify 4 bytes: SHORT
+[PASS] classify 4 bytes: size field still reported (= 0x00000004)
+[PASS] classify 7 bytes: SHORT
+[PASS] classify 1 byte: SHORT
+[PASS] classify NULL/0: SHORT
+[PASS] classify NULL/12: SHORT, no read
+[PASS] classify NULL/12: info.len 0 (= 0x00000000)
+[PASS] declared 4 with 2 data bytes: SIZE_MISMATCH (= 0x00000001)
+[PASS] declared 4 with 2 data bytes: not PASS
+[PASS] declared 2 with 2 bytes (stub): UNEXPECTED_SIZE (= 0x00000001)
+[PASS] stub-style response: not PASS
+[PASS] stub-style response: size 2 reported (= 0x00000002)
+[PASS] declared 5 with 5 bytes: UNEXPECTED_SIZE
+[PASS] declared 4 with 5 bytes: SIZE_MISMATCH
+[PASS] size 0x0104 with 4 bytes: SIZE_MISMATCH (LE16 decoded)
+[PASS] declared 4, 3 bytes with status 1: SIZE_MISMATCH before status
+[PASS] status 1 error 5: VALID_ERROR_STATUS (= 0x00000001)
+[PASS] status 1 error 5: first_error recorded
+[PASS] status 1 error 5: status reported (= 0x00000001)
+[PASS] status 1 error 5: error reported (= 0x00000005)
+[PASS] status 1 error 5 alone: verdict ERROR_STATUS
+[PASS] 7 OK + 1 error: 7 x VALID_OK (= 0x00000007)
+[PASS] 7 OK + 1 error: 1 x VALID_ERROR_STATUS (= 0x00000001)
+[PASS] 7 OK + 1 error: verdict ERROR_STATUS, not PASS
+[PASS] error in window 1, OK in window 2: not PASS
+[PASS] status 0 error 5: VALID_ERROR_STATUS
+[PASS] status 1 error 0: VALID_ERROR_STATUS
+[PASS] own request echoed: 1 frame (= 0x00000001)
+[PASS] own request echoed: NOT_RESPONSE (= 0x00000001)
+[PASS] own request echoed: counted as echoed request (= 0x00000001)
+[PASS] own request echoed: decoded length 44 (= 0x0000002C)
+[PASS] own request echoed: dir 0x00 (= 0x00000000)
+[PASS] own request echoed: verdict NO_VALID (never PASS)
+[PASS] 5 echoed requests counted (= 0x00000005)
+[PASS] 5 echoed requests: all frames are echoes
+[PASS] 5 echoed requests: not PASS
+[PASS] dir 0x00 cmd 0x0A: NOT_RESPONSE (= 0x00000001)
+[PASS] dir 0x00 cmd 0x0A: not counted as our echo (= 0x00000000)
+[PASS] dir 0x02 cmd 0x08: NOT_RESPONSE (= 0x00000001)
+[PASS] dir 0x02 cmd 0x08: not counted as our echo (echo needs dir 0x00) (= 0x00000000)
+[PASS] overrun-truncated echo (C0 per window): no frame (= 0x00000000)
+[PASS] overrun-truncated echo: no incomplete trailing frame (= 0x00000000)
+[PASS] overrun-truncated echo: no stray bytes (= 0x00000000)
+[PASS] overrun-truncated echo: verdict NO_FRAMES, not PASS
+[PASS] opcode 0x0A response: OTHER_OPCODE (= 0x00000001)
+[PASS] opcode 0x0A response: not PASS
+[PASS] opcode 0x02 with status 1: OTHER_OPCODE (= 0x00000001)
+[PASS] opcode 0x02 with status 1: not a SYNC error status (= 0x00000000)
+[PASS] dir 0x02 cmd 0x0A: NOT_RESPONSE (dir checked first)
+[PASS] invalid escape DB 00: 1 frame discarded (= 0x00000001)
+[PASS] invalid escape DB 00: rest of the frame ignored, next frame decoded (= 0x00000001)
+[PASS] invalid escape DB 00: recovery -> VALID_OK (= 0x00000001)
+[PASS] invalid escape then valid frame: verdict PASS
+[PASS] escape event: C0 -> NONE
+[PASS] escape event: 01 -> NONE
+[PASS] escape event: DB -> NONE
+[PASS] escape event: DB 00 -> DISCARD_ESCAPE
+[PASS] escape event: later DB in discarded frame -> NONE
+[PASS] escape event: later bad escape not re-reported
+[PASS] escape event: closing C0 of discarded frame -> NONE
+[PASS] escape event: decoder idle after C0
+[PASS] DB C0: frame discarded (= 0x00000001)
+[PASS] DB C0: C0 still opens the next frame -> VALID_OK (= 0x00000001)
+[PASS] only a discarded frame: 0 classified frames (= 0x00000000)
+[PASS] only a discarded frame: verdict NO_VALID
+[PASS] 100-byte frame: discarded as over-long (= 0x00000001)
+[PASS] 100-byte frame: only the following frame classified (= 0x00000001)
+[PASS] over-long then valid frame: verdict PASS
+[PASS] only an over-long frame: 0 classified frames (= 0x00000000)
+[PASS] only an over-long frame: verdict NO_VALID
+[PASS] 64 bytes: no discard (= 0x00000000)
+[PASS] 64 bytes: frame event
+[PASS] 64 bytes: frame_len 64 (= 0x00000040)
+[PASS] 74 bytes: exactly one DISCARD_OVERFLOW event (= 0x00000001)
+[PASS] 74 bytes: discarded frame is not reported as incomplete
+[PASS] 74 bytes: closing C0 -> NONE
+[PASS] C0 x 10: no frame (= 0x00000000)
+[PASS] C0 x 10: no incomplete frame (= 0x00000000)
+[PASS] C0 x 10: no stray bytes (= 0x00000000)
+[PASS] C0 x 10: verdict NO_FRAMES
+[PASS] C0 C0: first C0 -> NONE
+[PASS] C0 C0: empty frame -> NONE
+[PASS] no bytes: verdict NO_FRAMES
+[PASS] verdict(NULL): NO_FRAMES
+[PASS] trailing 6 bytes without closing C0: flagged incomplete (= 0x00000001)
+[PASS] trailing incomplete: not classified (= 0x00000000)
+[PASS] trailing incomplete only: verdict NO_FRAMES
+[PASS] 12 bytes without closing C0: not VALID_OK (= 0x00000000)
+[PASS] 12 bytes without closing C0: incomplete (= 0x00000001)
+[PASS] valid + trailing 01 08 04: incomplete flagged (= 0x00000001)
+[PASS] valid + trailing incomplete: verdict PASS (info only)
+[PASS] C0 DB at window end: incomplete (= 0x00000001)
+[PASS] split across windows: window 1 incomplete (= 0x00000001)
+[PASS] split across windows: window 2 tail counted as stray (= 0x00000007)
+[PASS] split across windows: only the complete frame is VALID_OK (= 0x00000001)
+[PASS] byte-by-byte: no event before the closing C0 (= 0x00000010)
+[PASS] byte-by-byte: closing C0 -> FRAME
+[PASS] byte-by-byte: accumulate returns VALID_OK
+[PASS] byte-by-byte: frame_len 12 (= 0x0000000C)
+[PASS] byte-by-byte: decoded bytes equal the payload
+[PASS] byte-by-byte: escaped value restored (= 0xC0DB55C0)
+[PASS] byte-by-byte: verdict PASS
+[PASS] accumulate(NONE): no class
+[PASS] accumulate(FRAME, NULL decoder): no class
+[PASS] accumulate: frame count unchanged by ignored events (= 0x00000001)
+[PASS] regression 01 08 00 00 00000000: old parser accepted
+[PASS] regression 01 08 00 00 00000000: now UNEXPECTED_SIZE (= 0x00000001)
+[PASS] regression 01 08 00 00 00000000: now not PASS
+[PASS] regression 8-byte header declaring 4: old parser accepted
+[PASS] regression 8-byte header declaring 4: now SIZE_MISMATCH (= 0x00000001)
+[PASS] regression 8-byte header declaring 4: now not PASS
+[PASS] regression error-status response: old parser accepted
+[PASS] regression error-status response: now ERROR_STATUS
+[PASS] regression 01 08 + garbage: old parser accepted
+[PASS] regression 01 08 + garbage: now SIZE_MISMATCH (= 0x00000001)
+[PASS] regression 01 08 + garbage: now not PASS
+[PASS] regression 2-byte-status response: old parser accepted
+[PASS] regression 2-byte-status response: now UNEXPECTED_SIZE
+[PASS] valid response: old parser accepted
+[PASS] valid response: new classifier VALID_OK
+[PASS] class name VALID_OK
+[PASS] class name VALID_ERROR_STATUS
+[PASS] class name SHORT
+[PASS] class name NOT_RESPONSE
+[PASS] class name OTHER_OPCODE
+[PASS] class name SIZE_MISMATCH
+[PASS] class name UNEXPECTED_SIZE
+[PASS] class name out of range: ?
+[PASS] stats_init: frames 0 (= 0x00000000)
+[PASS] stats_init: no first records
+[PASS] stats_init: first_malformed_class = none
+[PASS] slip_feed(NULL): NONE
+[PASS] slip_finish(NULL): false
+[PASS] first records: 6 frames (= 0x00000006)
+[PASS] first records: first_ok is the first VALID_OK (= 0x11111111)
+[PASS] first records: first_error is the first VALID_ERROR_STATUS (= 0x00000005)
+[PASS] first records: first_malformed_class is the first other-class frame (UNEXPECTED_SIZE)
+[PASS] first records: first_malformed cmd 0x08 (not the later 0x0A) (= 0x00000008)
+[PASS] first records: verdict ERROR_STATUS
+[PASS] realistic window: 8 x VALID_OK (= 0x00000008)
+[PASS] realistic window: 8 frames (= 0x00000008)
+[PASS] realistic window: boot text counted as stray
+[PASS] realistic window: verdict PASS
+SUITE esp32c5_proto: 195 checks, 0 failed
+SUITE esp32c5_proto: PASS
+exit code 0
+
+==============================================================================
+SUITE fc_result                                c      PASS
+==============================================================================
+$ C:\msys64\mingw64\bin\gcc.exe -std=c11 -O1 -g -Wall -Wextra -Werror -Wno-unused-function -DFC_HOST_TEST -IC:\Users\prith\OneDrive\Documents\pritham\frimware\05_TOOLS\host_tests -IC:\Users\prith\OneDrive\Documents\pritham\frimware\03_MANUFACTURING_TEST\Tests -IC:\Users\prith\OneDrive\Documents\pritham\frimware\04_DRIVERS\console C:\Users\prith\OneDrive\Documents\pritham\frimware\05_TOOLS\host_tests\fc_result\test_fc_result.c C:\Users\prith\OneDrive\Documents\pritham\frimware\03_MANUFACTURING_TEST\Tests\fc_result.c -o C:\Users\prith\OneDrive\Documents\pritham\frimware\build\host_tests\fc_result.exe
+
+$ fc_result.exe 
+[PASS] TEST_PASS -> PASS (= 0x00000002)
+[PASS] TEST_FAIL -> FAIL (= 0x00000003)
+[PASS] TEST_SKIP -> SKIP (= 0x00000004)
+[PASS] invalid 3 -> FAIL (= 0x00000003)
+[PASS] invalid -1 -> FAIL (= 0x00000003)
+[PASS] 20 x PASS, complete -> PASS (= 0x00000001)
+[PASS] mask 0 (= 0x00000000)
+[PASS] all PASS but run IN_PROGRESS -> NONE (incomplete) (= 0x00000000)
+[PASS] run NOT_STARTED -> NONE (= 0x00000000)
+[PASS] run ABORTED -> ABORTED even with PASS states (= 0x00000003)
+[PASS] 19 entries (a mandatory test missing) -> FAIL (= 0x00000002)
+[PASS] missing entry 19 reported in the mask (= 0x00080000)
+[PASS] 21 entries -> FAIL (table mismatch) (= 0x00000002)
+[PASS] NULL states -> FAIL (= 0x00000002)
+[PASS] NULL states: all 20 bits not passed (= 0x000FFFFF)
+[PASS] mandatory SKIP -> FAIL (= 0x00000002)
+[PASS] SKIP bit 5 in mask (= 0x00000020)
+[PASS] NOT_RUN entry in a 'complete' run -> FAIL (= 0x00000002)
+[PASS] RUNNING entry -> FAIL (= 0x00000002)
+[PASS] ABORTED entry -> FAIL (= 0x00000002)
+[PASS] corrupt state value -> FAIL (= 0x00000002)
+[PASS] all FAIL -> FAIL (= 0x00000002)
+[PASS] all 20 bits (= 0x000FFFFF)
+[PASS] first and last bit positions (= 0x00080001)
+[PASS] NULL mask pointer accepted (= 0x00000002)
+[PASS] state name PASS
+[PASS] state name NOT_RUN
+[PASS] state name for garbage
+[PASS] final name ABORTED
+[PASS] run name COMPLETE
+[PASS] publish_fault ignores an uninitialised log (bad magic) (= 0x00000000)
+[PASS] fault -> final ABORTED (= 0x00000003)
+[PASS] fault -> run ABORTED (= 0x00000003)
+[PASS] running test -> ABORTED (= 0x00000005)
+[PASS] finished test keeps PASS (= 0x00000002)
+[PASS] fault PC stored (= 0x34001234)
+[PASS] fault address stored (= 0x70000000)
+[PASS] fault after a PASS run withdraws the PASS (= 0x00000003)
+[PASS] completed entry not rewritten (= 0x00000002)
+[PASS] fault with current_test = none does not write out of bounds
+[PASS] crc32('') = 0 (= 0x00000000)
+[PASS] crc32('123456789') = 0xCBF43926 (check value) (= 0xCBF43926)
+[PASS] crc32(quick brown fox) = 0x414FA339 (= 0x414FA339)
+[PASS] chunked update equals one-shot (= 0xCBF43926)
+[PASS] NULL data leaves the CRC unchanged (= 0x00001234)
+SUITE fc_result: 45 checks, 0 failed
+SUITE fc_result: PASS
+exit code 0
+
+==============================================================================
+SUITE image_header                             c      PASS
+==============================================================================
+$ C:\msys64\mingw64\bin\gcc.exe -std=c11 -O1 -g -Wall -Wextra -Werror -Wno-unused-function -DFC_HOST_TEST -IC:\Users\prith\OneDrive\Documents\pritham\frimware\05_TOOLS\host_tests -IC:\Users\prith\OneDrive\Documents\pritham\frimware\04_DRIVERS\board C:\Users\prith\OneDrive\Documents\pritham\frimware\05_TOOLS\host_tests\image_header\test_image_header.c C:\Users\prith\OneDrive\Documents\pritham\frimware\04_DRIVERS\board\fc_image_header.c -o C:\Users\prith\OneDrive\Documents\pritham\frimware\build\host_tests\image_header.exe
+
+$ image_header.exe C:\Users\prith\OneDrive\Documents\pritham\frimware\build/FSBL-trusted.bin C:\Users\prith\OneDrive\Documents\pritham\frimware\build/FSBL.bin C:\Users\prith\OneDrive\Documents\pritham\frimware\build/App-trusted.bin C:\Users\prith\OneDrive\Documents\pritham\frimware\build/App.bin
+[PASS] FSBL: signed image readable (C:\Users\prith\OneDrive\Documents\pritham\frimware\build/FSBL-trusted.bin)
+[PASS] FSBL: raw image readable (C:\Users\prith\OneDrive\Documents\pritham\frimware\build/FSBL.bin)
+[PASS] FSBL: first 4 bytes are 53 54 4D 32 ("STM2")
+[PASS] FSBL: native LE word of the magic is 0x324D5453 (= 0x324D5453)
+[PASS] FSBL: 0.2.0 comparison (LE word == 0x53544D32) REJECTS the real image (B1 root cause)
+[PASS] FSBL: fc_image_header_parse() accepts the real signed image
+[PASS] FSBL: magic_ok() on the real bytes
+[PASS] FSBL: header version 0x00020300 (= 0x00020300)
+[PASS] FSBL: header entry == raw image word 1 (Reset_Handler) (= 0x34188A05)
+[PASS] FSBL: payload at 0x400 == raw image word 1 as well (= 0x34188A05)
+[PASS] FSBL: parse with the 0x74 bytes test_boot copies
+[PASS] FSBL: parse with the 128 bytes test_nor reads
+[PASS] App: signed image readable (C:\Users\prith\OneDrive\Documents\pritham\frimware\build/App-trusted.bin)
+[PASS] App: raw image readable (C:\Users\prith\OneDrive\Documents\pritham\frimware\build/App.bin)
+[PASS] App: first 4 bytes are 53 54 4D 32 ("STM2")
+[PASS] App: native LE word of the magic is 0x324D5453 (= 0x324D5453)
+[PASS] App: 0.2.0 comparison (LE word == 0x53544D32) REJECTS the real image (B1 root cause)
+[PASS] App: fc_image_header_parse() accepts the real signed image
+[PASS] App: magic_ok() on the real bytes
+[PASS] App: header version 0x00020300 (= 0x00020300)
+[PASS] App: header entry == raw image word 1 (Reset_Handler) (= 0x34013A25)
+[PASS] App: payload at 0x400 == raw image word 1 as well (= 0x34013A25)
+[PASS] App: parse with the 0x74 bytes test_boot copies
+[PASS] App: parse with the 128 bytes test_nor reads
+[PASS] synthetic v2.3 header accepted
+[PASS] synthetic entry decoded byte-wise LE (= 0x34011F0D)
+[PASS] byte-swapped magic (32 4D 54 53) rejected
+[PASS] erased (0xFF) first byte rejected
+[PASS] observed magic byte reported (= 0x000000FF)
+[PASS] header version 2.2 rejected
+[PASS] 0x73-byte buffer rejected as short
+[PASS] NULL buffer rejected
+[PASS] magic_ok(NULL) is false
+[PASS] all-zero RAM (debugger-loaded image, no FSBL header) rejected
+SUITE image_header: 34 checks, 0 failed
+SUITE image_header: PASS
+exit code 0
+
+==============================================================================
+SUITE psram_check                              c      PASS
+==============================================================================
+$ C:\msys64\mingw64\bin\gcc.exe -std=c11 -O1 -g -Wall -Wextra -Werror -Wno-unused-function -DFC_HOST_TEST -IC:\Users\prith\OneDrive\Documents\pritham\frimware\05_TOOLS\host_tests -IC:\Users\prith\OneDrive\Documents\pritham\frimware\04_DRIVERS\psram C:\Users\prith\OneDrive\Documents\pritham\frimware\05_TOOLS\host_tests\psram_check\test_psram_check.c C:\Users\prith\OneDrive\Documents\pritham\frimware\04_DRIVERS\psram\fc_psram_check.c -o C:\Users\prith\OneDrive\Documents\pritham\frimware\build\host_tests\psram_check.exe
+
+$ psram_check.exe 
+psram_check: fc_psram_mr_check / fc_psram_protection_check (host build, NOT a hardware test)
+[PASS] MR0 reset value computed from the fields = 0x08 (= 0x00000008)
+[PASS] MR0[5:2] requirement = LT 0 + RLC 0b010 (= 0x00000008)
+[PASS] MR all reset defaults -> 0 (= 0x00000000)
+[PASS] MR realistic good (ULP, gen 1, MR3/MR8/MR4[4:3] non-default) -> 0 (= 0x00000000)
+[PASS] MR4 = 0x50 (MR4[4] = x) -> 0 (= 0x00000000)
+[PASS] MR0 = 0xC8 (reserved MR0[7:6] set, masked) -> 0 (= 0x00000000)
+[PASS] MR1 vendor 0x0C -> VENDOR only (= 0x00000001)
+[PASS] MR1 vendor 0x0E (ULP set) -> VENDOR only (= 0x00000001)
+[PASS] MR2 density 256 Mb -> DENSITY only (= 0x00000002)
+[PASS] MR2 density 128 Mb -> DENSITY only (= 0x00000002)
+[PASS] MR2 density reserved 0b000 -> DENSITY only (= 0x00000002)
+[PASS] MR2 KGD 0b000 (FAIL die) -> KGD only (= 0x00000004)
+[PASS] MR2 KGD 0b111 -> KGD only (= 0x00000004)
+[PASS] MR2 KGD 0b010 -> KGD only (= 0x00000004)
+[PASS] MR0 latency code LC 6 -> LATENCY only (= 0x00000008)
+[PASS] MR0 latency code LC 4 -> LATENCY only (= 0x00000008)
+[PASS] MR0 fixed latency (LT 1) -> LATENCY only (= 0x00000008)
+[PASS] MR0 drive half -> DRIVE only (= 0x00000010)
+[PASS] MR0 drive 1/8 -> DRIVE only (= 0x00000010)
+[PASS] MR4 WLC 6 -> WLC only (= 0x00000020)
+[PASS] MR4 WLC 3 -> WLC only (= 0x00000020)
+[PASS] MR4 PASR bottom 1/2 -> PASR only (= 0x00000040)
+[PASS] MR4 PASR none -> PASR only (= 0x00000040)
+[PASS] MR4 PASR top 1/8 -> PASR only (= 0x00000040)
+[PASS] MR0 = 0x09 (bit 0 flipped from the reset default) (= 0x00000010)
+[PASS] MR0 = 0x0A (bit 1 flipped from the reset default) (= 0x00000010)
+[PASS] MR0 = 0x0C (bit 2 flipped from the reset default) (= 0x00000008)
+[PASS] MR0 = 0x00 (bit 3 flipped from the reset default) (= 0x00000008)
+[PASS] MR0 = 0x18 (bit 4 flipped from the reset default) (= 0x00000008)
+[PASS] MR0 = 0x28 (bit 5 flipped from the reset default) (= 0x00000008)
+[PASS] MR0 = 0x48 (bit 6 flipped from the reset default) (= 0x00000000)
+[PASS] MR0 = 0x88 (bit 7 flipped from the reset default) (= 0x00000000)
+[PASS] MR1 = 0x0C (bit 0 flipped from the reset default) (= 0x00000001)
+[PASS] MR1 = 0x0F (bit 1 flipped from the reset default) (= 0x00000001)
+[PASS] MR1 = 0x09 (bit 2 flipped from the reset default) (= 0x00000001)
+[PASS] MR1 = 0x05 (bit 3 flipped from the reset default) (= 0x00000001)
+[PASS] MR1 = 0x1D (bit 4 flipped from the reset default) (= 0x00000001)
+[PASS] MR1 = 0x2D (bit 5 flipped from the reset default) (= 0x00000000)
+[PASS] MR1 = 0x4D (bit 6 flipped from the reset default) (= 0x00000000)
+[PASS] MR1 = 0x8D (bit 7 flipped from the reset default) (= 0x00000000)
+[PASS] MR2 = 0xDF (bit 0 flipped from the reset default) (= 0x00000002)
+[PASS] MR2 = 0xDC (bit 1 flipped from the reset default) (= 0x00000002)
+[PASS] MR2 = 0xDA (bit 2 flipped from the reset default) (= 0x00000002)
+[PASS] MR2 = 0xD6 (bit 3 flipped from the reset default) (= 0x00000000)
+[PASS] MR2 = 0xCE (bit 4 flipped from the reset default) (= 0x00000000)
+[PASS] MR2 = 0xFE (bit 5 flipped from the reset default) (= 0x00000004)
+[PASS] MR2 = 0x9E (bit 6 flipped from the reset default) (= 0x00000004)
+[PASS] MR2 = 0x5E (bit 7 flipped from the reset default) (= 0x00000004)
+[PASS] MR4 = 0x41 (bit 0 flipped from the reset default) (= 0x00000040)
+[PASS] MR4 = 0x42 (bit 1 flipped from the reset default) (= 0x00000040)
+[PASS] MR4 = 0x44 (bit 2 flipped from the reset default) (= 0x00000040)
+[PASS] MR4 = 0x48 (bit 3 flipped from the reset default) (= 0x00000000)
+[PASS] MR4 = 0x50 (bit 4 flipped from the reset default) (= 0x00000000)
+[PASS] MR4 = 0x60 (bit 5 flipped from the reset default) (= 0x00000020)
+[PASS] MR4 = 0x00 (bit 6 flipped from the reset default) (= 0x00000020)
+[PASS] MR4 = 0xC0 (bit 7 flipped from the reset default) (= 0x00000020)
+[PASS] MR3 = 0xFF, MR8 = 0xFF (reported only) -> 0 (= 0x00000000)
+[PASS] MR3 = 0x00, MR8 = 0x00 (reported only) -> 0 (= 0x00000000)
+[PASS] MR all 0x00 (bus stuck low) -> VENDOR|DENSITY|KGD|LATENCY|WLC (= 0x0000002F)
+[PASS] MR all 0xFF (bus floating high) -> all 7 bits (= 0x0000007F)
+[PASS] MR vendor 0 + LC 6 + half drive -> three bits (= 0x00000019)
+[PASS] MR check NULL -> PARAM (= 0x80000000)
+[PASS] MR failure names: every bit named, all distinct
+[PASS] MR failure name of an undefined bit = unknown
+[PASS] MR failure name of a multi-bit mask = unknown (one bit at a time)
+[PASS] MR failure bits 0..6 (= 0x0000007F)
+[PASS] protection: firmware config at 50 MHz -> 0 (= 0x00000000)
+[PASS]   decoded TCEN = 1
+[PASS]   decoded LPTR = 32 cycles (= 0x00000020)
+[PASS]   decoded PRESCALER = 0 (= 0x00000000)
+[PASS]   memory clock = 50 MHz (= 0x02FAF080)
+[PASS]   CSBOUND code = 8 (= 0x00000008)
+[PASS]   CSBOUND = 256 bytes (= 0x00000100)
+[PASS]   REFRESH = 120 cycles (= 0x00000078)
+[PASS]   worst case = 120 + 4 + 4 + LPTR 32 = 160 cycles (= 0x000000A0)
+[PASS]   worst-case CE# low = 3200 ns (= 0x00000C80)
+[PASS]   3200 ns <= 3500 ns budget
+[PASS]   budget 3500 ns < tCEM 4000 ns
+[PASS] protection: unrelated DCR2/DCR3/LPTR bits ignored -> 0 (= 0x00000000)
+[PASS]   LPTR = TIMEOUT[15:0] only (= 0x00000020)
+[PASS] protection: info NULL -> result still computed (= 0x00000000)
+[PASS] protection: CSBOUND 1 (2 bytes) -> 0 (= 0x00000000)
+[PASS]   CSBOUND 1 = 2 bytes (= 0x00000002)
+[PASS] protection: CSBOUND 11 (2 KiB row) -> 0 (= 0x00000000)
+[PASS]   CSBOUND 11 = 2048 bytes (= 0x00000800)
+[PASS] protection: memory clock exactly 133 MHz -> 0 (= 0x00000000)
+[PASS]   160 cycles at 133 MHz = 1203.008 ns -> 1204 ns (rounded up) (= 0x000004B4)
+[PASS] protection: 48 MHz -> 0 (= 0x00000000)
+[PASS]   160 cycles at 48 MHz = 3333.33 ns -> 3334 ns (= 0x00000D06)
+[PASS] protection: LPTR 47 -> 175 cycles = 3500 ns -> 0 (= 0x00000000)
+[PASS] protection: LPTR 48 -> 176 cycles = 3520 ns -> CE_BOUND_EXCEEDED only (stall term) (= 0x00000040)
+[PASS] protection: LPTR 119 < REFRESH 120 but 247 cycles -> CE_BOUND_EXCEEDED only (= 0x00000040)
+[PASS] protection: the pre-review REFRESH 150 / LPTR 52 (4.2 us) is rejected (= 0x00000040)
+[PASS]   (150 + 4 + 4 + 52) x 20 ns = 4200 ns (= 0x00001068)
+[PASS] protection: TCEN off -> TCEN_OFF only (= 0x00000001)
+[PASS]   decoded TCEN = 0
+[PASS] protection: LPTR 0 -> LPTR_ZERO only (= 0x00000002)
+[PASS] protection: LPTR TIMEOUT[15:0] 0 -> LPTR_ZERO only (= 0x00000002)
+[PASS] protection: LPTR == REFRESH -> LPTR_NOT_BELOW|CE_BOUND_EXCEEDED (= 0x00000044)
+[PASS] protection: LPTR 0xFFFF > REFRESH -> LPTR_NOT_BELOW|CE_BOUND_EXCEEDED (= 0x00000044)
+[PASS] protection: REFRESH 20 < LPTR 32 (bound 60 cycles fine) -> LPTR_NOT_BELOW only (= 0x00000004)
+[PASS] protection: CSBOUND 0 (disabled) -> CSBOUND_INVALID only (= 0x00000008)
+[PASS]   CSBOUND 0 = 0 bytes (no boundary) (= 0x00000000)
+[PASS] protection: CSBOUND 12 (4 KiB) -> CSBOUND_INVALID only (= 0x00000008)
+[PASS]   CSBOUND 12 = 4096 bytes (= 0x00001000)
+[PASS] protection: CSBOUND 31 -> CSBOUND_INVALID only (= 0x00000008)
+[PASS]   CSBOUND 31 = 2^31 bytes (= 0x80000000)
+[PASS] protection: REFRESH 0 -> REFRESH_ZERO|LPTR_NOT_BELOW|CE_BOUND_EXCEEDED (= 0x00000054)
+[PASS]   REFRESH 0: CE# low reported unbounded (= 0xFFFFFFFF)
+[PASS]   REFRESH 0: no cycle bound (= 0x00000000)
+[PASS] protection: kernel 25 MHz -> CE_BOUND_EXCEEDED only (= 0x00000040)
+[PASS]   160 cycles at 25 MHz = 6400 ns (= 0x00001900)
+[PASS] protection: PRESCALER 1 at 50 MHz -> CE_BOUND_EXCEEDED only (= 0x00000040)
+[PASS]   decoded PRESCALER = 1 (= 0x00000001)
+[PASS]   memory clock = 25 MHz (= 0x017D7840)
+[PASS]   6400 ns (= 0x00001900)
+[PASS] protection: PRESCALER 255 -> CE_BOUND_EXCEEDED only (= 0x00000040)
+[PASS]   memory clock = 195312 Hz (= 0x0002FAF0)
+[PASS] protection: kernel 200 MHz -> CLK_INVALID only (= 0x00000020)
+[PASS]   160 cycles at 200 MHz = 800 ns (= 0x00000320)
+[PASS] protection: 133 MHz + 1 Hz -> CLK_INVALID only (= 0x00000020)
+[PASS] protection: 200 MHz / (1 + 1) = 100 MHz -> 0 (= 0x00000000)
+[PASS] protection: kernel 0 Hz -> CLK_INVALID|CE_BOUND_EXCEEDED (= 0x00000060)
+[PASS]   0 Hz: CE# low reported unbounded (= 0xFFFFFFFF)
+[PASS] protection: REFRESH 135 at 50 MHz = exactly 3500 ns -> 0 (= 0x00000000)
+[PASS]   175 cycles = 3500 ns (= 0x00000DAC)
+[PASS] protection: REFRESH 136 at 50 MHz = 3520 ns -> CE_BOUND_EXCEEDED only (= 0x00000040)
+[PASS]   176 cycles = 3520 ns (= 0x00000DC0)
+[PASS] protection: 175 cycles at 49999999 Hz (3500.00007 ns) -> CE_BOUND_EXCEEDED (= 0x00000040)
+[PASS]   rounded up to 3501 ns (= 0x00000DAD)
+[PASS] protection: REFRESH 0xFFFFFFFF -> CE_BOUND_EXCEEDED only (= 0x00000040)
+[PASS]   cycle count saturated (= 0xFFFFFFFF)
+[PASS]   ns saturated (85.9 s) (= 0xFFFFFFFF)
+[PASS] protection: REFRESH 5000 -> CE_BOUND_EXCEEDED only (= 0x00000040)
+[PASS]   5040 cycles at 50 MHz = 100800 ns (64-bit product) (= 0x000189C0)
+[PASS] protection: regs NULL -> PARAM (= 0x80000000)
+[PASS]   regs NULL: info cleared
+[PASS] protection: both NULL -> PARAM (= 0x80000000)
+[PASS] protection failure names: every bit named, all distinct
+[PASS] protection failure name of an undefined bit = unknown
+SUITE psram_check: 140 checks, 0 failed
+SUITE psram_check: PASS
+exit code 0
+
+==============================================================================
+SUITE runner                                   c      PASS
+==============================================================================
+$ C:\msys64\mingw64\bin\gcc.exe -std=c11 -O1 -g -Wall -Wextra -Werror -Wno-unused-function -DFC_HOST_TEST -DFC_BUILD_ID="hosttest" -DFC_BUILD_DATE="2026-09-23T00:00:00Z" -IC:\Users\prith\OneDrive\Documents\pritham\frimware\05_TOOLS\host_tests -IC:\Users\prith\OneDrive\Documents\pritham\frimware\05_TOOLS\host_tests\runner\stub -IC:\Users\prith\OneDrive\Documents\pritham\frimware\05_TOOLS\host_tests\runner -IC:\Users\prith\OneDrive\Documents\pritham\frimware\03_MANUFACTURING_TEST\Tests -IC:\Users\prith\OneDrive\Documents\pritham\frimware\04_DRIVERS\console -IC:\Users\prith\OneDrive\Documents\pritham\frimware\03_MANUFACTURING_TEST\Core\Inc C:\Users\prith\OneDrive\Documents\pritham\frimware\05_TOOLS\host_tests\runner\test_runner_host.c C:\Users\prith\OneDrive\Documents\pritham\frimware\05_TOOLS\host_tests\runner\fake_console.c C:\Users\prith\OneDrive\Documents\pritham\frimware\03_MANUFACTURING_TEST\Tests\test_runner.c C:\Users\prith\OneDrive\Documents\pritham\frimware\03_MANUFACTURING_TEST\Tests\test_report.c C:\Users\prith\OneDrive\Documents\pritham\frimware\03_MANUFACTURING_TEST\Tests\fc_result.c -o C:\Users\prith\OneDrive\Documents\pritham\frimware\build\host_tests\runner.exe
+
+$ runner.exe C:\Users\prith\OneDrive\Documents\pritham\frimware\build/host_tests/fixtures
+[PASS] fc_diag_log_t v2 size on the host = firmware layout (16512) (= 0x00004080)
+[PASS] pass: runner returns true
+[PASS] pass: log final_result PASS (= 0x00000001)
+[PASS] pass: log run_state COMPLETE (= 0x00000002)
+[PASS] pass: not-pass mask 0 (= 0x00000000)
+[PASS] pass: test_count 20 (= 0x00000014)
+[PASS] pass: all 20 per-test states PASS
+[PASS] pass: FINAL RESULT: PASS printed
+[PASS] pass: RESULTS header printed
+[PASS] pass: entry 19 listed as PASS
+[PASS] pass: END line with build id
+[PASS] pass: END line present
+[PASS] pass: END-line CRC = CRC-32 of the report text before END (= 0x09F95898)
+[PASS] pass: log report_crc32 = same CRC (= 0x09F95898)
+[PASS] pass: report (and CRC) starts at the banner
+[PASS] pass: build id stored in the log header
+[PASS] fail: runner returns false
+[PASS] fail: log final FAIL (= 0x00000002)
+[PASS] fail: mask = bit 7 only (= 0x00000080)
+[PASS] fail: entry 7 state FAIL (= 0x00000003)
+[PASS] fail: RESULTS line for entry 7 = FAIL
+[PASS] fail: FINAL RESULT: FAIL printed
+[PASS] skip: runner returns false
+[PASS] skip: entry 16 state SKIP (= 0x00000004)
+[PASS] skip: FINAL FAIL (= 0x00000002)
+[PASS] skip: mask bit 16 (= 0x00010000)
+[PASS] invalid: runner returns false
+[PASS] invalid: return value 7 -> FAIL (= 0x00000003)
+[PASS] invalid: FINAL FAIL (= 0x00000002)
+[PASS] fault: runner did not return (halted in the fault handler)
+[PASS] fault: log final ABORTED (= 0x00000003)
+[PASS] fault: log run_state ABORTED (= 0x00000003)
+[PASS] fault: entry 18 ABORTED (= 0x00000005)
+[PASS] fault: entry 17 kept its PASS (= 0x00000002)
+[PASS] fault: entry 19 NOT_RUN (= 0x00000000)
+[PASS] fault: fault code recorded (= 0x00000002)
+[PASS] fault: stacked PC recorded (= 0x34001234)
+[PASS] fault: FINAL RESULT: ABORTED printed
+[PASS] fault: no END line
+[PASS] fault: no PASS anywhere
+[PASS] hang: runner did not return
+[PASS] hang: log final NONE (no verdict) (= 0x00000000)
+[PASS] hang: log run_state IN_PROGRESS (= 0x00000001)
+[PASS] hang: current_test = 18 (= 0x00000012)
+[PASS] hang: entry 18 RUNNING (= 0x00000001)
+[PASS] hang: no FINAL RESULT line at all
+[PASS] idlefault: runner itself returned PASS
+[PASS] idlefault: PASS withdrawn -> ABORTED (= 0x00000003)
+[PASS] idlefault: run_state ABORTED (= 0x00000003)
+[PASS] idlefault: completed entries keep their state (= 0x00000002)
+[PASS] idlefault: ABORTED printed after the PASS block
+SUITE runner: 51 checks, 0 failed
+SUITE runner: PASS
+exit code 0
+
+==============================================================================
+SUITE xspi_quiesce                             c      PASS
+==============================================================================
+$ C:\msys64\mingw64\bin\gcc.exe -std=c11 -O1 -g -Wall -Wextra -Werror -Wno-unused-function -DFC_HOST_TEST -IC:\Users\prith\OneDrive\Documents\pritham\frimware\05_TOOLS\host_tests -IC:\Users\prith\OneDrive\Documents\pritham\frimware\04_DRIVERS\nor C:\Users\prith\OneDrive\Documents\pritham\frimware\05_TOOLS\host_tests\xspi_quiesce\test_xspi_quiesce.c C:\Users\prith\OneDrive\Documents\pritham\frimware\04_DRIVERS\nor\fc_xspi_quiesce.c -o C:\Users\prith\OneDrive\Documents\pritham\frimware\build\host_tests\xspi_quiesce.exe
+
+$ xspi_quiesce.exe 
+[PASS] FSBL mapped hand-over (BUSY on entry) -> OK
+[PASS] entry state recorded: EN, BUSY, ABORT issued
+[PASS] no timeout flags
+[PASS] final CR: EN, FMODE, ABORT all clear (= 0x00000000)
+[PASS] final SR: BUSY clear (= 0x00000000)
+[PASS] TCF set by the abort was cleared through FCR.CTCF
+[PASS] ABORT written exactly once (= 0x00000001)
+[PASS] 0.2.0 algorithm reports a BUSY timeout on the healthy hand-over (the defect)
+[PASS] ... although the controller ended idle (stale flag was the only cause)
+[PASS] enabled + idle -> OK
+[PASS] no ABORT when BUSY was clear
+[PASS] EN cleared
+[PASS] disabled controller -> OK
+[PASS] was_enabled false
+[PASS] stuck BUSY -> ERR_BUSY (fails, does not hang)
+[PASS] busy_timeout and abort_timeout recorded
+[PASS] bounded: <= 2 x timeout
+[PASS] abort time-out but final state idle -> OK (final state decides)
+[PASS] abort_timeout is information only
+[PASS] BUSY clears 60 polls after EN=0, bound 100 -> OK
+[PASS] BUSY clears 500 polls after EN=0, bound 100 -> ERR_BUSY
+[PASS] NULL ops rejected
+[PASS] NULL info rejected
+[PASS] incomplete ops table rejected
+SUITE xspi_quiesce: 24 checks, 0 failed
+SUITE xspi_quiesce: PASS
+exit code 0
+
+==============================================================================
+SUITE loader_storageinfo                       python PASS
+==============================================================================
+$ python 05_TOOLS/host_tests/loader_storageinfo/test_loader_storageinfo.py 
+[PASS] built loader present: C:\Users\prith\OneDrive\Documents\pritham\frimware\build\MX25UM25645G_STM32N657_FC.stldr (run: make -C 07_EXTERNAL_LOADER)
+[PASS] ST reference loader present: C:\ST\STM32CubeIDE_2.1.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.cubeprogrammer.win32_2.2.400.202601091506\tools\bin\ExternalLoader\MX25UM51245G_STM32N6570-NUCLEO.stldr
+[PASS] built loader: OVERALL PASS (33 checks passed, 0 failed)
+[PASS] report carries 'STRUCTURAL CHECK ONLY - NOT HARDWARE QUALIFIED'
+[PASS] report carries the loader SHA-256
+[PASS] report final line is exactly 'OVERALL: PASS'
+[PASS] .stldr is byte-identical to build/loader ELF
+[PASS] CLI: exit 0, report file ends with 'OVERALL: PASS'
+[PASS] reference decodes to NUCLEO facts: name 'MX25UM51245G_STM32N6570-NUCLEO', type 3, start 0x70000000, size 0x04000000 (64 MiB), page 0x1000, erase 0xFF, sectors 1024 x 0x10000
+[PASS] reference API set = Init, Write, SectorErase, MassErase, Verify (Init, Write, SectorErase, MassErase, Verify)
+[PASS] reference memory_* hooks are the WEAK ST defaults
+[PASS] fault 'size_64MiB' detected: [FAIL] DeviceSize 0x04000000 (expected 0x02000000 = 32 MiB, MX25UM25645G 256 Mbit)
+[PASS] fault 'sectors_1024' detected: [FAIL] Sectors 1024 x 0x10000 + {0,0} terminator (expected 512 x 0x10000)
+[PASS] fault 'start_0x90000000' detected: [FAIL] DeviceStartAddress 0x90000000 (expected 0x70000000, XSPI2 window)
+[PASS] fault 'page_0' detected: [FAIL] PageSize 0x0 (expected 0x1000, divides every sector)
+[PASS] fault 'erase_00' detected: [FAIL] EraseValue 0x00 (expected 0xFF)
+[PASS] fault 'type_spi' detected: [FAIL] DeviceType 7 (expected 3 = NOR_FLASH)
+[PASS] fault 'name_changed' detected: [FAIL] DeviceName 'NX25UM25645G_STM32N657_FC' (expected 'MX25UM25645G_STM32N657_FC', NUL-terminated within 100 bytes)
+[PASS] fault 'no_terminator' detected: [FAIL] Sectors 512 x 0x10000, 1 x 0x10000 + {0,0} terminator (expected 512 x 0x10000)
+[PASS] fault 'api_init_missing' detected: [FAIL] API Init: symbol missing
+[PASS] fault 'api_write_missing' detected: [FAIL] API Write: symbol missing
+[PASS] fault 'api_sectorerase_missing' detected: [FAIL] API SectorErase: symbol missing
+[PASS] fault 'api_masserase_missing' detected: [FAIL] API MassErase: symbol missing
+[PASS] fault 'api_verify_missing' detected: [FAIL] API Verify: symbol missing
+[PASS] fault 'api_write_local' detected: [FAIL] API Write: LOCAL FUNC at 0x341811CD (Thumb, section .text, segment 0)
+[PASS] fault 'storageinfo_renamed' detected: [FAIL] StorageInfo: symbol missing
+[PASS] fault 'memory_mapmode_weak' detected: [FAIL] hook memory_mapmode: WEAK FUNC (required GLOBAL = strong board hook, so init failures propagate; ST default WEAK; reference WEAK)
+[PASS] fault 'memory_write_weak' detected: [FAIL] hook memory_write: WEAK FUNC (required GLOBAL = strong board hook, so init failures propagate; ST default WEAK; reference WEAK)
+[PASS] fault 'memory_sectorerase_weak' detected: [FAIL] hook memory_sectorerase: WEAK FUNC (required GLOBAL = strong board hook, so init failures propagate; ST default WEAK; reference WEAK)
+[PASS] fault 'memory_masserase_weak' detected: [FAIL] hook memory_masserase: WEAK FUNC (required GLOBAL = strong board hook, so init failures propagate; ST default WEAK; reference WEAK)
+[PASS] fault 'status_missing' detected: [FAIL] board init status object fc_loader_status present
+[PASS] fault 'storageinfo_writable' detected: [FAIL] StorageInfo section '.stm32_device_info': PROGBITS, allocated, read-only, not executable (flags 0x3; reference 'P3' flags 0x2)
+[PASS] fault 'storageinfo_segment_not_load' detected: [FAIL] StorageInfo alone in its own PT_LOAD segment ? (flags -); reference: segment 0 alone=yes
+[PASS] fault 'loader_segment_not_exec' detected: [FAIL] API Init: GLOBAL FUNC at 0x34181199 (Thumb, section .text, segment none/not executable)
+[PASS] conf header parsed: SIZE 0x02000000, NAME MX25UM25645G_STM32N657_FC
+[PASS] conf header SIZE 0x04000000 vs binary 0x02000000 -> cross-check FAIL
+[PASS] NUCLEO MX25UM51245G loader as board loader -> FAIL (DeviceSize 64 MiB)
+[PASS] fault 'elf64_class' detected: [FAIL] loader is not a valid ELF32 LE file: EI_CLASS=2, not ELF32
+[PASS] fault 'truncated' detected: [FAIL] loader is not a valid ELF32 LE file: truncated or malformed ELF (unpack_from requires a buffer of at least 116 bytes for unpacking 32 bytes at offset 84 (actual buffer size is 100))
+[PASS] fault 'not_elf' detected: [FAIL] loader is not a valid ELF32 LE file: no ELF magic (7f 45 4c 46)
+[PASS] missing loader file -> FAIL
+[PASS] missing reference loader -> FAIL (comparison is part of the check)
+[PASS] CLI on a corrupted copy: exit 1, 'OVERALL: FAIL'
+loader_storageinfo: 43 checks, 0 failed
+exit code 0
+
+==============================================================================
+SUITE station_tools                            python PASS
+==============================================================================
+$ python 05_TOOLS/host_tests/station_tools/test_station_tools.py 
+[PASS] fixture pass present (written by the runner C suite)
+[PASS] fixture fail present (written by the runner C suite)
+[PASS] fixture skip present (written by the runner C suite)
+[PASS] fixture invalid present (written by the runner C suite)
+[PASS] fixture fault present (written by the runner C suite)
+[PASS] fixture hang present (written by the runner C suite)
+[PASS] fixture idlefault present (written by the runner C suite)
+[PASS] UART: intact all-PASS run -> exit 0 (STATION VERDICT: PASS)
+[PASS] UART: all-PASS with the expected build id -> exit 0 (STATION VERDICT: PASS)
+[PASS] UART: all-PASS but a different build expected -> exit 4 (STATION VERDICT: INVALID)
+[PASS] UART: one mandatory FAIL -> exit 1 (STATION VERDICT: FAIL)
+[PASS] UART: mandatory test returned SKIP -> exit 1 (STATION VERDICT: FAIL)
+[PASS] UART: invalid test return value -> exit 1 (STATION VERDICT: FAIL)
+[PASS] UART: HardFault during PSRAM -> exit 3 (STATION VERDICT: ABORTED)
+[PASS] UART: fault after a PASS report (verdict withdrawn) -> exit 3 (STATION VERDICT: ABORTED)
+[PASS] UART: hang during PSRAM (no FINAL/END) -> exit 2 (STATION VERDICT: INCOMPLETE)
+[PASS] UART: FSBL trace/noise before the report is ignored -> exit 0 (STATION VERDICT: PASS)
+[PASS] UART: LF-only capture accepted -> exit 0 (STATION VERDICT: PASS)
+[PASS] UART: empty capture -> exit 2 (STATION VERDICT: INCOMPLETE)
+[PASS] UART: missing capture file -> exit 2 (STATION VERDICT: INCOMPLETE)
+[PASS] UART: END line missing (truncated after FINAL RESULT) -> exit 2 (STATION VERDICT: INCOMPLETE)
+[PASS] UART: capture cut in the middle -> exit 2 (STATION VERDICT: INCOMPLETE)
+[PASS] UART: cut before the RESULTS block -> exit 2 (STATION VERDICT: INCOMPLETE)
+[PASS] UART: one corrupted character -> CRC mismatch -> exit 4 (STATION VERDICT: INVALID)
+[PASS] UART: one dropped byte in the body -> CRC mismatch -> exit 4 (STATION VERDICT: INVALID)
+[PASS] UART: garbled banner -> no report found (INCOMPLETE, never PASS) -> exit 2 (STATION VERDICT: INCOMPLETE)
+[PASS] UART: two reports (board reset during test) -> exit 4 (STATION VERDICT: INVALID)
+[PASS] UART: RESULTS line says FAIL but mask/FINAL say PASS (CRC fixed) -> exit 4 (STATION VERDICT: INVALID)
+[PASS] UART: FINAL FAIL with an all-PASS block (CRC fixed) -> exit 4 (STATION VERDICT: INVALID)
+[PASS] UART: forged FINAL PASS over a failing block (CRC fixed) -> exit 4 (STATION VERDICT: INVALID)
+[PASS] UART: a mandatory RESULTS line missing (CRC fixed) -> exit 4 (STATION VERDICT: INVALID)
+[PASS] UART fixture: verdict lines start with [PASS]/[FAIL]/[SKIP], [INFO] lines are indented
+[PASS] SWD: complete all-PASS log -> exit 0 (STATION VERDICT: PASS)
+[PASS] SWD: expected build id -> exit 0 (STATION VERDICT: PASS)
+[PASS] SWD: wrong build id -> exit 4 (STATION VERDICT: INVALID)
+[PASS] SWD: decodes fine but a mandatory test FAILED (decode success != PASS) -> exit 1 (STATION VERDICT: FAIL)
+[PASS] SWD: mandatory SKIP -> exit 1 (STATION VERDICT: FAIL)
+[PASS] SWD: fault during PSRAM -> exit 3 (STATION VERDICT: ABORTED)
+[PASS] SWD: fault after completion -> exit 3 (STATION VERDICT: ABORTED)
+[PASS] SWD: hang (run IN_PROGRESS) -> exit 2 (STATION VERDICT: INCOMPLETE)
+[PASS] SWD fixture is exactly sizeof(fc_diag_log_t) = 16512 bytes
+[PASS] SWD: magic poisoned (log not rewritten by a new run) -> exit 2 (STATION VERDICT: INCOMPLETE)
+[PASS] SWD: dump shorter than the header -> exit 4 (STATION VERDICT: INVALID)
+[PASS] SWD: partial dump of a complete log -> exit 4 (STATION VERDICT: INVALID)
+[PASS] SWD: old log version 1 -> exit 4 (STATION VERDICT: INVALID)
+[PASS] SWD: mask inconsistent with states -> exit 4 (STATION VERDICT: INVALID)
+[PASS] SWD: a FAIL state under a PASS verdict -> exit 4 (STATION VERDICT: INVALID)
+[PASS] SWD: invalid state value -> exit 4 (STATION VERDICT: INVALID)
+[PASS] SWD: log text corrupted -> CRC mismatch -> exit 4 (STATION VERDICT: INVALID)
+[PASS] SWD: forged final PASS over a failing log -> exit 4 (STATION VERDICT: INVALID)
+[PASS] SWD: final PASS but run state IN_PROGRESS -> INCOMPLETE -> exit 2 (STATION VERDICT: INCOMPLETE)
+[PASS] SWD: test_count 19 (a mandatory test missing) -> exit 4 (STATION VERDICT: INVALID)
+SUITE station_tools: 52 checks, 0 failed
+SUITE station_tools: PASS
+exit code 0
+
+==============================================================================
+SUITE tool_hygiene                             python PASS
+==============================================================================
+$ python 05_TOOLS/host_tests/tool_hygiene/test_tool_hygiene.py 
+[PASS] found 8 batch files under 05_TOOLS
+[PASS] CRLF only: 05_TOOLS/build_all.bat
+[PASS] CRLF only: 05_TOOLS/jlc_templates/diagnostics/CHECK_UART_LOG.bat
+[PASS] CRLF only: 05_TOOLS/jlc_templates/diagnostics/READ_DIAG_LOG.bat
+[PASS] CRLF only: 05_TOOLS/jlc_templates/PROGRAM_JLCPCB.bat
+[PASS] CRLF only: 05_TOOLS/jlc_templates/VERIFY_JLCPCB.bat
+[PASS] CRLF only: 05_TOOLS/program_dev.bat
+[PASS] CRLF only: 05_TOOLS/read_diag_log.bat
+[PASS] CRLF only: 05_TOOLS/sign_images.bat
+[PASS] CRLF only (package): 06_JLCPCB/JLCPCB_Firmware_Package/diagnostics/CHECK_UART_LOG.bat
+[PASS] CRLF only (package): 06_JLCPCB/JLCPCB_Firmware_Package/diagnostics/READ_DIAG_LOG.bat
+[PASS] CRLF only (package): 06_JLCPCB/JLCPCB_Firmware_Package/programming/PROGRAM_JLCPCB.bat
+[PASS] CRLF only (package): 06_JLCPCB/JLCPCB_Firmware_Package/programming/VERIFY_JLCPCB.bat
+[PASS] build_all.bat references an existing script: 05_TOOLS\check_repro.py
+[PASS] build_all.bat references an existing script: 05_TOOLS\gen_version.py
+[PASS] build_all.bat references an existing script: 05_TOOLS\host_tests\run_host_tests.py
+[PASS] build_all.bat references an existing script: 05_TOOLS\package_jlc.py
+[PASS] build_all.bat references an existing script: 05_TOOLS\sign_images.bat
+[PASS] build_all.bat references an existing script: 05_TOOLS\source_digest.py
+[PASS] build_all.bat references an existing script: 05_TOOLS\static_safety_check.py
+[PASS] build_all.bat references an existing script: 05_TOOLS\verify_images.py
+[PASS] build_all.bat references an existing script: 05_TOOLS\verify_loader.py
+[PASS] build_all.bat references an existing script: 05_TOOLS\verify_package.py
+[PASS] build_all.bat references an existing script: check_repro.py
+[PASS] build_all.bat references an existing script: gen_version.py
+[PASS] build_all.bat references an existing script: host_tests\run_host_tests.py
+[PASS] build_all.bat references an existing script: package_jlc.py
+[PASS] build_all.bat references an existing script: sign_images.bat
+[PASS] build_all.bat references an existing script: source_digest.py
+[PASS] build_all.bat references an existing script: static_safety_check.py
+[PASS] build_all.bat references an existing script: verify_images.py
+[PASS] build_all.bat references an existing script: verify_loader.py
+[PASS] build_all.bat references an existing script: verify_package.py
+[PASS] build_all.ps1 references an existing script: 05_TOOLS/check_repro.py
+[PASS] build_all.ps1 references an existing script: 05_TOOLS/gen_version.py
+[PASS] build_all.ps1 references an existing script: 05_TOOLS/host_tests/run_host_tests.py
+[PASS] build_all.ps1 references an existing script: 05_TOOLS/package_jlc.py
+[PASS] build_all.ps1 references an existing script: 05_TOOLS/sign_images.bat
+[PASS] build_all.ps1 references an existing script: 05_TOOLS/source_digest.py
+[PASS] build_all.ps1 references an existing script: 05_TOOLS/static_safety_check.py
+[PASS] build_all.ps1 references an existing script: 05_TOOLS/verify_images.py
+[PASS] build_all.ps1 references an existing script: 05_TOOLS/verify_loader.py
+[PASS] build_all.ps1 references an existing script: 05_TOOLS/verify_package.py
+[PASS] build_all.ps1 references an existing script: build_all.bat
+[PASS] build_all.ps1 references an existing script: check_repro.py
+[PASS] build_all.ps1 references an existing script: gen_version.py
+[PASS] build_all.ps1 references an existing script: host_tests/run_host_tests.py
+[PASS] build_all.ps1 references an existing script: host_tests\run_host_tests.py
+[PASS] build_all.ps1 references an existing script: package_jlc.py
+[PASS] build_all.ps1 references an existing script: sign_images.bat
+[PASS] build_all.ps1 references an existing script: source_digest.py
+[PASS] build_all.ps1 references an existing script: static_safety_check.py
+[PASS] build_all.ps1 references an existing script: verify_images.py
+[PASS] build_all.ps1 references an existing script: verify_loader.py
+[PASS] build_all.ps1 references an existing script: verify_package.py
+SUITE tool_hygiene: 55 checks, 0 failed
+SUITE tool_hygiene: PASS
+exit code 0
+
+SUMMARY: 10 suite(s), 10 passed, 0 failed
+  clock_check                                  c      PASS
+  esp32c5_proto                                c      PASS
+  fc_result                                    c      PASS
+  image_header                                 c      PASS
+  psram_check                                  c      PASS
+  runner                                       c      PASS
+  xspi_quiesce                                 c      PASS
+  loader_storageinfo                           python PASS
+  station_tools                                python PASS
+  tool_hygiene                                 python PASS
+OVERALL: PASS

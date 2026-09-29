@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="540" viewBox="0 0 900 540" font-family="Arial, Helvetica, sans-serif">
+  <!-- STM32N657 FC : J20 SWD header to ST-LINK wiring.  Hand-written.  NOT HARDWARE VERIFIED.
+       Sources: Netlist_mainpcb_2026-09-16.enet (U1 -> J20), STM32N657I0H3Q_BALL_MAP.txt
+       (P7 = PA13 DEBUG_DAT/SWDIO, P6 = PA14 DEBUG_CLK/SWCLK, E4 = NRST),
+       PHASE1_IMPLEMENTATION_SPEC.md section 0. -->
+  <rect x="0" y="0" width="900" height="540" fill="#ffffff"/>
+  <text x="20" y="30" font-size="18" font-weight="bold">STM32N657 FC - J20 SWD connector to ST-LINK (NOT HARDWARE VERIFIED)</text>
+  <text x="20" y="52" font-size="13">J20 = 6-pin debug header on the flight-controller PCB (netlist U1 to J20). Pin functions per PHASE1_IMPLEMENTATION_SPEC.md.</text>
+
+  <!-- J20 box -->
+  <rect x="80" y="90" width="300" height="300" fill="none" stroke="#000" stroke-width="2"/>
+  <text x="90" y="112" font-size="16" font-weight="bold">J20 (board)</text>
+
+  <!-- ST-LINK box -->
+  <rect x="560" y="90" width="300" height="300" fill="none" stroke="#000" stroke-width="2"/>
+  <text x="570" y="112" font-size="16" font-weight="bold">ST-LINK V2/V3 (external probe)</text>
+
+  <!-- pin 1 VDD3V3 -->
+  <rect x="95" y="132" width="30" height="20" fill="none" stroke="#000"/>
+  <text x="105" y="147" font-size="14">1</text>
+  <text x="135" y="147" font-size="15">VDD3V3</text>
+  <text x="135" y="163" font-size="12" fill="#555">target voltage reference (T_VCC)</text>
+  <line x1="380" y1="142" x2="560" y2="142" stroke="#000" stroke-width="2"/>
+  <text x="575" y="147" font-size="15">T_VCC (target ref)</text>
+
+  <!-- pin 2 GND -->
+  <rect x="95" y="172" width="30" height="20" fill="none" stroke="#000"/>
+  <text x="105" y="187" font-size="14">2</text>
+  <text x="135" y="187" font-size="15">GND</text>
+  <text x="135" y="203" font-size="12" fill="#555">ground</text>
+  <line x1="380" y1="182" x2="560" y2="182" stroke="#000" stroke-width="2"/>
+  <text x="575" y="187" font-size="15">GND</text>
+
+  <!-- pin 3 DEBUG_DAT -->
+  <rect x="95" y="212" width="30" height="20" fill="none" stroke="#000"/>
+  <text x="105" y="227" font-size="14">3</text>
+  <text x="135" y="227" font-size="15">DEBUG_DAT</text>
+  <text x="135" y="243" font-size="12" fill="#555">SWDIO  PA13 (ball P7)</text>
+  <line x1="380" y1="222" x2="560" y2="222" stroke="#000" stroke-width="2"/>
+  <text x="575" y="227" font-size="15">SWDIO</text>
+
+  <!-- pin 4 DEBUG_CLK -->
+  <rect x="95" y="252" width="30" height="20" fill="none" stroke="#000"/>
+  <text x="105" y="267" font-size="14">4</text>
+  <text x="135" y="267" font-size="15">DEBUG_CLK</text>
+  <text x="135" y="283" font-size="12" fill="#555">SWCLK  PA14 (ball P6)</text>
+  <line x1="380" y1="262" x2="560" y2="262" stroke="#000" stroke-width="2"/>
+  <text x="575" y="267" font-size="15">SWCLK</text>
+
+  <!-- pin 5 NC -->
+  <rect x="95" y="292" width="30" height="20" fill="none" stroke="#000"/>
+  <text x="105" y="307" font-size="14">5</text>
+  <text x="135" y="307" font-size="15">NC</text>
+  <text x="135" y="323" font-size="12" fill="#555">not connected</text>
+  <text x="575" y="307" font-size="15" fill="#555">(no connection)</text>
+
+  <!-- pin 6 NRST -->
+  <rect x="95" y="332" width="30" height="20" fill="none" stroke="#000"/>
+  <text x="105" y="347" font-size="14">6</text>
+  <text x="135" y="347" font-size="15">NRST</text>
+  <text x="135" y="363" font-size="12" fill="#555">reset   (ball E4)</text>
+  <line x1="380" y1="342" x2="560" y2="342" stroke="#000" stroke-width="2"/>
+  <text x="575" y="347" font-size="15">NRST</text>
+
+  <!-- notes (firmware 0.2.1 package) -->
+  <text x="20" y="425" font-size="13">Programming (PROGRAM_JLCPCB.bat): STM32_Programmer_CLI -c port=SWD mode=UR --extload external_loader.stldr -w &lt;image&gt; &lt;addr&gt; -v</text>
+  <text x="20" y="443" font-size="13">FC_FSBL_LRUN_Trusted.bin to 0x70000000 ; FC_Manufacturing_Test_Trusted.bin to 0x70100000 (external NOR MX25UM25645G on XSPI2)</text>
+  <text x="20" y="461" font-size="13">Connect under reset (mode=UR) is the script default. The loader is NOT HARDWARE QUALIFIED (EXTERNAL_LOADER_STATUS.md).</text>
+  <text x="20" y="479" font-size="13">Console (not on J20): J4 TELEM1, USART1 115200 8N1, pin 2 = TX out of MCU, pin 3 = RX into MCU, pins 6-8 = GND.</text>
+  <text x="20" y="497" font-size="13">J4 pin 1 = VIN_PERIPH (about 5 V output): never connect it to the UART adapter.</text>
+  <text x="20" y="522" font-size="13" fill="#c00000">Never connect ESCs/propellers while programming. MOTOR_OE_N stays high (R52) at reset.</text>
+</svg>

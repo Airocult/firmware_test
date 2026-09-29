@@ -1,0 +1,85 @@
+STM32N657 FC - STATIC SAFETY REPORT (Phase 1 + Phase 2 rules)
+generated: 2026-09-23T23:21:15Z
+repo     : C:\Users\prith\OneDrive\Documents\pritham\frimware
+build dir: C:\Users\prith\OneDrive\Documents\pritham\frimware\build
+status   : SOFTWARE/TOOL CHECK ONLY - NOT HARDWARE VERIFIED
+
+== A. source grep (comments stripped) ==
+[PASS] no forbidden token in 103 source files (13 on the Phase-2 allow-list)
+
+== B. HAL module configuration ==
+[PASS] 02_CUSTOM_FSBL/FSBL/Inc/stm32n6xx_hal_conf.h: HAL_TIM_MODULE_ENABLED not active
+[PASS] 02_CUSTOM_FSBL/FSBL/Inc/stm32n6xx_hal_conf.h: HAL_IWDG_MODULE_ENABLED not active
+[PASS] 02_CUSTOM_FSBL/FSBL/Inc/stm32n6xx_hal_conf.h: HAL_WWDG_MODULE_ENABLED not active
+[PASS] 03_MANUFACTURING_TEST/Core/Inc/stm32n6xx_hal_conf.h: HAL_TIM_MODULE_ENABLED not active
+[PASS] 03_MANUFACTURING_TEST/Core/Inc/stm32n6xx_hal_conf.h: HAL_IWDG_MODULE_ENABLED not active
+[PASS] 03_MANUFACTURING_TEST/Core/Inc/stm32n6xx_hal_conf.h: HAL_WWDG_MODULE_ENABLED not active
+[PASS] 03_MANUFACTURING_TEST/Core/Inc/stm32n6xx_hal_conf.h: HAL_FDCAN_MODULE_ENABLED active (Phase 2)
+[PASS] 02_CUSTOM_FSBL/FSBL/Inc/stm32n6xx_hal_conf.h: HAL_FDCAN_MODULE_ENABLED not active (FSBL unchanged)
+[PASS] 03_MANUFACTURING_TEST/Core/Inc/stm32n6xx_hal_conf.h: HAL_ADC_MODULE_ENABLED active (Phase 2)
+[PASS] 02_CUSTOM_FSBL/FSBL/Inc/stm32n6xx_hal_conf.h: HAL_ADC_MODULE_ENABLED not active (FSBL unchanged)
+[PASS] 03_MANUFACTURING_TEST/Core/Inc/stm32n6xx_hal_conf.h: HAL_PCD_MODULE_ENABLED active (Phase 2)
+[PASS] 02_CUSTOM_FSBL/FSBL/Inc/stm32n6xx_hal_conf.h: HAL_PCD_MODULE_ENABLED not active (FSBL unchanged)
+
+== C. ELF checks (arm-none-eabi-nm / readelf) ==
+       nm      : C:\ST\STM32CubeIDE_2.1.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.14.3.rel1.win32_1.0.100.202602081740\tools\bin\arm-none-eabi-nm.exe
+       readelf : C:\ST\STM32CubeIDE_2.1.1\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.14.3.rel1.win32_1.0.100.202602081740\tools\bin\arm-none-eabi-readelf.exe
+[PASS] FSBL.elf has no symbol matching HAL_TIM_ / HAL_TIMEx_
+[PASS] FSBL.elf .isr_vector at 0x34180400
+[PASS] FSBL.elf entry 0x34188A05 within 0x34180400..0x341FFFFF
+[PASS] App.elf exports fc_board_safe_gpio_init at 0x3400402c
+[PASS] App.elf exports fc_diag_log at 0x3401a060
+[PASS] App.elf exports test_osc_hse_run at 0x34002914
+[PASS] App.elf exports test_osc_lse_run at 0x34002990
+[PASS] App.elf exports test_i2c_mux_run at 0x34002a08
+[PASS] App.elf exports test_adc_power_run at 0x34002c24
+[PASS] App.elf exports test_sd_power_run at 0x34002e44
+[PASS] App.elf exports test_can1_run at 0x3400324c
+[PASS] App.elf exports test_can2_run at 0x34003268
+[PASS] App.elf exports test_usb_run at 0x34003284
+[PASS] App.elf exports test_esp32c5_run at 0x3400337c
+[PASS] App.elf exports test_psram_run at 0x3400383c
+[PASS] App.elf has no symbol matching HAL_TIM_ / HAL_TIMEx_
+[PASS] App.elf has no symbol matching ^(esp_loader_|loader_port_) (esp-serial-flasher API)
+[PASS] App.elf has no symbol matching ^HAL_PCD_Start$ (USB device start (never started in Phase 2))
+[PASS] App.elf has no symbol matching ^HAL_PCD_DevConnect$ (USB pull-up connect (never connected in Phase 2))
+[PASS] App.elf .isr_vector at 0x34000400
+[PASS] App.elf entry 0x34013A25 within 0x34000400..0x341FFFFF
+
+== D. trusted image checks ==
+[PASS] FSBL-trusted.bin starts with 53 54 4D 32
+[PASS] FSBL-trusted.bin payload at 0x400 equals FSBL.bin
+[PASS] App-trusted.bin starts with 53 54 4D 32
+[PASS] App-trusted.bin payload at 0x400 equals App.bin
+[PASS] App-trusted.bin size 0x19180 <= 0x40000
+
+== E. configuration constants ==
+[PASS] 02_CUSTOM_FSBL/FSBL/Inc/stm32_extmem_conf.h: EXTMEM_LRUN_SOURCE_SIZE == 0x40000
+[PASS] 02_CUSTOM_FSBL/FSBL/Inc/stm32_extmem_conf.h: EXTMEM_DRIVER_PSRAM == 0 (FSBL unchanged)
+[PASS] 03_MANUFACTURING_TEST/Core/Inc/stm32_extmem_conf.h: EXTMEM_LRUN_SOURCE_SIZE == 0x40000
+[PASS] 03_MANUFACTURING_TEST/Core/Inc/stm32_extmem_conf.h: EXTMEM_DRIVER_PSRAM == 1 (Phase 2 PSRAM driver)
+[PASS] 03_MANUFACTURING_TEST/Core/Inc/stm32_extmem_conf.h: extmem_list_config[2] (NOR + PSRAM entries)
+[PASS] FSBL main.c uses HAL_XSPI_SIZE_256MB
+[PASS] FSBL main.c does not contain HAL_XSPI_SIZE_512MB
+[PASS] FSBL Makefile defines NO_OTP_FUSE (OTP never programmed)
+
+== F. ESP32 ROM-protocol rule (PHASE2 spec section 5, PHASE2_CORRECTIONS_SPEC.md section 2) ==
+[PASS] F0: ESP32 rule scans 5 file(s): 04_DRIVERS/esp32c5/esp32c5_proto.c, 04_DRIVERS/esp32c5/esp32c5_proto.h, 04_DRIVERS/esp32c5/esp32c5_rom.c, 04_DRIVERS/esp32c5/esp32c5_rom.h, 03_MANUFACTURING_TEST/Tests/test_esp32c5.c
+[PASS] no flash/erase/mem/write-reg/run/baudrate token in 5 ESP32 file(s)
+[PASS] 04_DRIVERS/esp32c5/esp32c5_proto.h: ESP32C5_PROTO_CMD_SYNC = 0x08 (SYNC) allowed
+[PASS] ESP32 opcode heuristic: every CMD-named numeric constant is 0x08 SYNC (1 definition(s) inspected)
+[PASS] 04_DRIVERS/esp32c5/esp32c5_proto.h: ESP32C5_PROTO_CMD_SYNC = 0x08 (the constant the request builder uses)
+[PASS] F3a: 04_DRIVERS/esp32c5/esp32c5_proto.c: esp32c5_proto_build_sync(uint8_t *out, uint32_t cap) - buffer + capacity only, not parameterised by command
+[PASS] F3a: 04_DRIVERS/esp32c5/esp32c5_proto.h: prototype esp32c5_proto_build_sync(uint8_t *out, uint32_t cap)
+[PASS] F3b: the builder's only command-byte assignment is <buf>[1] = ESP32C5_PROTO_CMD_SYNC
+[PASS] F3b: the builder references no CMD identifier other than ESP32C5_PROTO_CMD_SYNC
+[PASS] F3c: the only UART transmit (04_DRIVERS/esp32c5/esp32c5_rom.c, blocking HAL_UART_Transmit) sends 'frame' = esp32c5_proto_build_sync() output; no ->TDR write
+[PASS] F3d: 04_DRIVERS/esp32c5/esp32c5_proto.c is pure (includes: <string.h>, "esp32c5_proto.h"; no HAL_ token)
+[PASS] F3d: 04_DRIVERS/esp32c5/esp32c5_proto.h is pure (includes: <stdint.h>, <stdbool.h>, <stddef.h>; no HAL_ token)
+       heuristic limits: source-level checks; reviewers must still read the SLIP request builder
+
+== G. Phase-2 source presence ==
+[PASS] all 22 Phase-2 driver/test files present
+
+checks passed: 60  failed: 0
+OVERALL: PASS
